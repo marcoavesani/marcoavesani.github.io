@@ -1,0 +1,40 @@
+{
+  "name": "phasematchjs",
+  "version": "0.0.1a",
+  "author": "Krister Shalm <kshalm@gmail.com>",
+  "description": " ENTER_DESCRIPTION ",
+  "contributors": [
+    {
+      "name": "Jasper Palfree",
+      "email": "jasper@wellcaffeinated.net"
+    },
+    {
+      "name": "Krister Shalm",
+      "email": "kshalm@gmail.com"
+    }
+  ],
+  "main": null,
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [],
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "latest",
+    "grunt-bg-shell": "*",
+    "grunt-contrib-clean": "latest",
+    "grunt-contrib-compass": "^1.0.4",
+    "grunt-contrib-concat": "latest",
+    "grunt-contrib-copy": "latest",
+    "grunt-contrib-jasmine": "latest",
+    "grunt-contrib-jshint": "latest",
+    "grunt-contrib-requirejs": "*",
+    "grunt-contrib-uglify": "latest",
+    "grunt-contrib-watch": "~0.3.1",
+    "http-server": "*",
+    "lodash": "^4.6.1"
+  },
+  "bundledDependencies": [],
+  "license": "GPL-3.0"
+}
