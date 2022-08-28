@@ -8,4 +8,4 @@ paperurl: 'https://opg.optica.org/abstract.cfm?URI=ol-45-17-4706'
 citation: ' Marco Avesani,  Costantino Agnesi,  Andrea Stanco,  Giuseppe Vallone,  Paolo Villoresi, &quot;Stable, low-error, and calibration-free polarization encoder for free-space quantum communication.&quot; Optics Letters, 2020.'
 ---
 [Arxiv](https://arxiv.org/abs/2004.11877){: .btn .btn--info}
-[Access paper here](https://opg.optica.org/abstract.cfm?URI=ol-45-17-4706){:target="_blank"}
+ [Journal](https://opg.optica.org/abstract.cfm?URI=ol-45-17-4706){: .btn .btn--info}

@@ -8,4 +8,4 @@ paperurl: 'https://opg.optica.org/abstract.cfm?URI=ol-44-10-2398'
 citation: ' Costantino Agnesi,  Marco Avesani,  Andrea Stanco,  Paolo Villoresi,  Giuseppe Vallone, &quot;All-fiber self-compensating polarization encoder for quantum key distribution.&quot; Optics Letters, 2019.'
 ---
 [Arxiv](https://arxiv.org/abs/1903.00696){: .btn .btn--info}
-[Access paper here](https://opg.optica.org/abstract.cfm?URI=ol-44-10-2398){:target="_blank"}
+ [Journal](https://opg.optica.org/abstract.cfm?URI=ol-44-10-2398){: .btn .btn--info}
