@@ -1,9 +1,10 @@
 ---
-title: "Versatile and concurrent fpga-based architecture for practical quantum communication systems"
+title: "Versatile and Concurrent FPGA-Based Architecture for Practical Quantum Communication Systems"
 collection: publications
-permalink: /publication/2022-01-01-Versatile-and-concurrent-fpga-based-architecture-for-practical-quantum-communication-systems
+permalink: /publication/2022-01-01-Versatile-and-Concurrent-FPGA-Based-Architecture-for-Practical-Quantum-Communication-Systems
 date: 2022-01-01
 venue: 'IEEE Transactions on Quantum Engineering'
-citation: ' Andrea Stanco,  Francesco Santagiustina,  Luca Calderaro,  Marco Avesani,  Tommaso Bertapelle,  Daniele Dequal,  Giuseppe Vallone,  Paolo Villoresi, &quot;Versatile and concurrent fpga-based architecture for practical quantum communication systems.&quot; IEEE Transactions on Quantum Engineering, 2022.'
+paperurl: 'https://ieeexplore.ieee.org/document/9695406/'
+citation: ' Andrea Stanco,  Francesco Santagiustina,  Luca Calderaro,  Marco Avesani,  Tommaso Bertapelle,  Daniele Dequal,  Giuseppe Vallone,  Paolo Villoresi, &quot;Versatile and Concurrent FPGA-Based Architecture for Practical Quantum Communication Systems.&quot; IEEE Transactions on Quantum Engineering, 2022.'
 ---
-Use [Google Scholar](https://scholar.google.com/scholar?q=Versatile+and+concurrent+fpga+based+architecture+for+practical+quantum+communication+systems){:target="_blank"} for full citation
+[Access paper here](https://ieeexplore.ieee.org/document/9695406/){:target="_blank"}
