@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "academicpages is a ready-to-fork GitHub Pages template for academic personal websites"
+title: "About me"
 excerpt: "About me"
 author_profile: true
 redirect_from: 
@@ -8,8 +8,6 @@ redirect_from:
   - /about.html
 ---
 
-About me
-------
 I am a postdoctoral researcher in the [QuantumFuture](https://quantumfuture.dei.unipd.it/) group at University of Padova, Italy.
 
 Research interests
