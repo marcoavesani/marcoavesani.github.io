@@ -10,7 +10,7 @@ redirect_from:
 
 I am a postdoctoral researcher in the [QuantumFuture](https://quantumfuture.dei.unipd.it/) group at University of Padova, Italy.
 
-I am also one of the co-founders of ThinkQuantum, a spin-off company that commercializes quantum-based technology solutions for cyber security and communication systems.
+I am also one of the co-founders of [ThinkQuantum](https://www.thinkquantum.com/), a spin-off company that commercializes quantum-based technology solutions for cyber security and communication systems.
 
 Research interests
 ------
