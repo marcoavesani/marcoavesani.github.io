@@ -1,0 +1,145 @@
+# Academic Publication Fetcher Configuration
+# This file contains settings for automatically fetching and updating publications
+
+# Author Information
+author:
+  name: "Marco Avesani"
+  highlight_name: "M. Avesani"  # How your name should be highlighted in author lists
+  
+  # Academic Profile IDs (get these from your profile URLs)
+  orcid_id: "0000-0001-5122-992X"
+  google_scholar_id: "g9RL-QcAAAAJ"  # From your Google Scholar profile URL
+  scopus_author_id: "57204622726"  # Optional: Your Scopus Author ID
+  
+  # Contact
+  email: "marco.avesani@unipd.it"
+
+# Fetching Settings
+fetching:
+  # Default sources to fetch from
+  default_sources:
+    - "arxiv"
+    - "crossref" 
+    - "orcid"
+    - "scholar"
+    - "scopus"  # Requires API key
+    - "wos"     # Requires API key
+  
+  # Maximum number of publications to fetch per source
+  max_results_per_source: 200
+  
+  # Deduplication threshold (0.0 to 1.0, higher means stricter matching)
+  deduplication_threshold: 0.8
+  
+  # Rate limiting (seconds between requests)
+  rate_limit: 1.0
+
+# Publication Types and Categories
+publication_types:
+  # Mapping of detected types to display categories
+  preprint:
+    display_name: "Preprints"
+    description: "Preprints and working papers"
+    venues:
+      - "arXiv"
+      - "bioRxiv"
+      - "ResearchGate"
+  
+  journal:
+    display_name: "Peer-reviewed Journals"
+    description: "Articles published in peer-reviewed journals"
+    
+  conference:
+    display_name: "Conference Papers"
+    description: "Papers presented at conferences and workshops"
+    
+  book:
+    display_name: "Books and Book Chapters"
+    description: "Books, book chapters, and edited volumes"
+
+# Jekyll Integration
+jekyll:
+  # Where to generate publication files
+  publications_collection: "_publications"
+  publications_page: "_pages/publications.md"
+  
+  # Publication page template settings
+  show_abstract: true
+  show_bibtex: true
+  show_citation_count: false  # Only available if fetched from Google Scholar
+  
+  # Button styles for links
+  button_styles:
+    arxiv: "btn btn--info"
+    journal: "btn btn--info" 
+    pdf: "btn btn--info"
+    doi: "btn btn--info"
+    code: "btn btn--success"
+    data: "btn btn--warning"
+
+# API Configuration (set these as environment variables or GitHub secrets)
+api_keys:
+  # Optional: Scopus API key for more comprehensive data
+  # Get from: https://dev.elsevier.com/
+  scopus_api_key_env: "SCOPUS_API_KEY"
+  
+  # Optional: Web of Science API key
+  # Requires institutional subscription
+  wos_api_key_env: "WOS_API_KEY"
+
+# Automation Settings
+automation:
+  # How often to check for new publications (cron format)
+  schedule: "0 6 * * *"  # Daily at 6 AM UTC
+  
+  # Whether to create PRs instead of direct commits
+  use_pull_requests: false
+  
+  # Commit message template
+  commit_message_template: "Auto-update publications ({date}) - {count} publications"
+  
+  # Files to exclude from git commits
+  exclude_from_git:
+    - "scripts/publications_cache.json"
+    - "scripts/__pycache__/"
+    - "scripts/*.pyc"
+
+# Filtering and Processing
+filters:
+  # Minimum year for publications (0 = no limit)
+  min_year: 0
+  
+  # Maximum year for publications (0 = no limit, useful for excluding future dates)
+  max_year: 0
+  
+  # Keywords to exclude from titles (case-insensitive)
+  exclude_title_keywords: []
+  
+  # Venues to exclude (case-insensitive)
+  exclude_venues: []
+  
+  # Publication types to exclude from display
+  exclude_publication_types: ["conference"]
+  
+  # Minimum number of authors (0 = no limit)
+  min_authors: 0
+  
+  # Only include publications where the author is first/last author
+  only_first_last_author: false
+
+# Logging and Debugging
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  log_file: "scripts/publication_fetcher.log"
+  max_log_size_mb: 10
+  backup_count: 5
+
+# Custom Field Mappings
+# Map common variations of journal/venue names to standardized forms
+venue_mappings:
+  "Phys. Rev. A": "Physical Review A"
+  "Phys. Rev. Applied": "Physical Review Applied"
+  "Opt. Lett.": "Optics Letters"
+  "IEEE Trans. Quantum Eng.": "IEEE Transactions on Quantum Engineering"
+  "Nat. Commun.": "Nature Communications"
+  "npj Quantum Inf.": "npj Quantum Information"

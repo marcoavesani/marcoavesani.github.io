@@ -1,0 +1,155 @@
+name: Update Publications
+
+on:
+  # Run daily at 6 AM UTC
+  schedule:
+    - cron: '0 6 * * *'
+  
+  # Allow manual triggering
+  workflow_dispatch:
+    inputs:
+      sources:
+        description: 'Sources to fetch from (comma-separated)'
+        required: false
+        default: 'arxiv,crossref,orcid,scholar'
+      force_update:
+        description: 'Force update even if no changes'
+        required: false
+        default: false
+        type: boolean
+
+jobs:
+  update-publications:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        fetch-depth: 0
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Install system dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y wget gnupg unzip curl
+        
+        # Install Chrome for Selenium
+        wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+        echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
+        sudo apt-get update
+        sudo apt-get install -y google-chrome-stable
+    
+    - name: Install Python dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r scripts/requirements.txt
+    
+    - name: Cache publications
+      uses: actions/cache@v3
+      with:
+        path: scripts/publications_cache.json
+        key: publications-cache-${{ hashFiles('scripts/publications_cache.json') }}
+        restore-keys: |
+          publications-cache-
+    
+    - name: Fetch publications
+      env:
+        SCOPUS_API_KEY: ${{ secrets.SCOPUS_API_KEY }}
+        WOS_API_KEY: ${{ secrets.WOS_API_KEY }}
+      run: |
+        cd scripts
+        
+        # Determine sources
+        if [ "${{ github.event.inputs.sources }}" != "" ]; then
+          SOURCES="${{ github.event.inputs.sources }}"
+        else
+          SOURCES="arxiv,crossref,orcid,scholar"
+        fi
+        
+        # Convert comma-separated to space-separated
+        SOURCES_ARGS=$(echo $SOURCES | tr ',' ' ')
+        
+        # Run the publication fetcher
+        python fetch_publications.py --sources $SOURCES_ARGS
+    
+    - name: Check for changes
+      id: check_changes
+      run: |
+        git add -A
+        if git diff --cached --quiet; then
+          echo "changes=false" >> $GITHUB_OUTPUT
+          echo "No changes detected"
+        else
+          echo "changes=true" >> $GITHUB_OUTPUT
+          echo "Changes detected"
+          git status
+        fi
+    
+    - name: Commit and push changes
+      if: steps.check_changes.outputs.changes == 'true' || github.event.inputs.force_update == 'true'
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        
+        # Get current date for commit message
+        DATE=$(date '+%Y-%m-%d')
+        
+        # Count publications
+        PUB_COUNT=$(find _publications -name "*.md" 2>/dev/null | wc -l || echo "0")
+        
+        git add -A
+        git commit -m "Auto-update publications ($DATE) - $PUB_COUNT publications" || exit 0
+        git push
+    
+    - name: Create pull request (alternative to direct push)
+      if: false  # Set to true if you prefer PRs instead of direct commits
+      uses: peter-evans/create-pull-request@v5
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        commit-message: "Auto-update publications"
+        title: "Auto-update publications"
+        body: |
+          Automated update of academic publications.
+          
+          This PR was automatically created by the publication fetcher workflow.
+          
+          **Changes:**
+          - Updated publication listings from academic sources
+          - Generated individual publication pages
+          - Updated main publications page
+          
+          Please review the changes and merge if everything looks correct.
+        branch: auto-update-publications
+        delete-branch: true
+    
+    - name: Summary
+      if: always()
+      run: |
+        echo "## Publication Update Summary" >> $GITHUB_STEP_SUMMARY
+        echo "- **Date:** $(date)" >> $GITHUB_STEP_SUMMARY
+        echo "- **Sources:** ${{ github.event.inputs.sources || 'arxiv,crossref,orcid,scholar' }}" >> $GITHUB_STEP_SUMMARY
+        
+        if [ -f "_pages/publications.md" ]; then
+          echo "- **Publications page:** Updated" >> $GITHUB_STEP_SUMMARY
+        else
+          echo "- **Publications page:** Not found" >> $GITHUB_STEP_SUMMARY
+        fi
+        
+        if [ -d "_publications" ]; then
+          PUB_COUNT=$(find _publications -name "*.md" | wc -l)
+          echo "- **Individual publication files:** $PUB_COUNT generated" >> $GITHUB_STEP_SUMMARY
+        else
+          echo "- **Individual publication files:** Directory not found" >> $GITHUB_STEP_SUMMARY
+        fi
+        
+        if [ "${{ steps.check_changes.outputs.changes }}" == "true" ]; then
+          echo "- **Changes:** Detected and committed" >> $GITHUB_STEP_SUMMARY
+        else
+          echo "- **Changes:** No changes detected" >> $GITHUB_STEP_SUMMARY
+        fi
