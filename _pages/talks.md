@@ -1,12 +1,14 @@
 ---
 layout: archive
-title: "Talks* Feb 2020 - SPIE Photonics West - SPIE OPTO - San Francisco - **Contributed talk:** "*Silicon photonics-based experimental daylight free-space quantum key distribution at telecom wavelength*"
-* Oct 2019 - Single-Photon Workshop 2019 - Milan - **Contributed talk:** "*Practical Source-Device-Independent Quantum random number generators*"
-* Apr 2019 - Quantum Information and Measurement (QIM) - Rome - **Contributed talk:** "*Seedless ultrafast source-device independent quantum random number generator*"
-* Feb 2019 - ITASEC 2019 - Pisa - **Oral Demo presentation:** "*A Random Number Generator Based on Quantum Protocol for GHz Rate Genuine Randomness*" presentations"
+title: "Talks and presentations"
 permalink: /talks/
 author_profile: true
 ---
+
+<div style="text-align: center; margin-bottom: 20px;">
+  <img src="https://www.padova.com/uploads/events/organizers/1580743466011482351_unipd-universita-di-padova.png?63747962666" alt="University of Padova" style="height: 80px; margin: 10px;">
+  <img src="https://quantumfuture.dei.unipd.it/wp-content/uploads/2024/03/logo_group_big.png" alt="Quantum Future Group" style="height: 80px; margin: 10px;">
+</div>
 
 {% if site.talkmap_link == true %}
 
@@ -36,10 +38,10 @@ author_profile: true
 * Mar 2021 - APS March 2021 - APS - Virtual - **Contributed talk:** "*Practical Semi-Device-Independent Quantum random number generators*"
 * Feb 2021 - ITASEC 2021 - Virtual - **Contributed talk:** "*A resource-effective Quantum Key Distribution field-trial in Padua with the iPOGNAC encoder and Qubit4Sync synchronization*"
 * Sept 2020 - Frontier in Optics FIO+LS 2020 - OSA - Virtual - **Contributed talk:** "*Semi-Device-Independent Quantum Random Number Generator based on heterodyne detection and bounded energy*"
-* Feb. 2020 - SPIE Photonics West - SPIE OPTO, San Francisco, 1 - 6 February 2020 Contributed talk: *"Silicon photonics-based experimental daylight free-space quantum key distribution at telecom wavelength"*
-* Oct. 2019 - Single-Photon Workshop 2019, Milan, 21-25 April 2019, Contributed talk: *"Practical Source-Device-Independent Quantum random number generators"*
-* Apr. 2019 - Quantum Information and Measurement (QIM) Rome, 4-6 April 2019, Contributed talk: *"Seedless ultrafast source-device independent quantum random number generator"*
-* Feb. 2019 - ITASEC 2019, 12-15 February 2019, Pisa - Oral Demo presentation: *“A Random Number Generator Based on Quantum Protocol for GHz Rate Genuine Randomness”*
+* Feb 2020 - SPIE Photonics West - SPIE OPTO - San Francisco - **Contributed talk:** "*Silicon photonics-based experimental daylight free-space quantum key distribution at telecom wavelength*"
+* Oct 2019 - Single-Photon Workshop 2019 - Milan - **Contributed talk:** "*Practical Source-Device-Independent Quantum random number generators*"
+* Apr 2019 - Quantum Information and Measurement (QIM) - Rome - **Contributed talk:** "*Seedless ultrafast source-device independent quantum random number generator*"
+* Feb 2019 - ITASEC 2019 - Pisa - **Oral Demo presentation:** "*A Random Number Generator Based on Quantum Protocol for GHz Rate Genuine Randomness*"
 * Oct 2018 - ICIQP 2018 - Paris, France - **Contributed talk:** "*Secure heterodyne-based quantum random number generator at 17 Gbps*"
 * Sept 2018 - IQIS 2018 - Catania, Italy - **Contributed talk:** "*Secure heterodyne-based quantum random number generator at 17 Gbps*"
 * Sept 2018 - WIVACE 2018 - Parma, Italy - **Contributed talk:** "*Secure heterodyne-based quantum random number generator at 17 Gbps*"
