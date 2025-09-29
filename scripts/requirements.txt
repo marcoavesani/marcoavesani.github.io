@@ -9,5 +9,4 @@ bibtexparser>=1.4.0
 python-dateutil>=2.8.0
 pyyaml>=6.0
 urllib3>=1.26.0
-selenium>=4.15.0
-webdriver-manager>=4.0.0
+orcid>=1.0.3

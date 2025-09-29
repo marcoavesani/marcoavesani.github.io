@@ -1,58 +1,31 @@
-import os
 import logging
 from typing import List, Optional
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.chrome.service import Service
 import time
 import re
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from publication_utils import Publication, PublicationNormalizer
 
 logger = logging.getLogger(__name__)
 
+# Try to import scholarly, fall back gracefully if not available
+try:
+    from scholarly import scholarly
+    SCHOLARLY_AVAILABLE = True
+except ImportError:
+    logger.warning("scholarly package not installed. Install with: pip install scholarly")
+    SCHOLARLY_AVAILABLE = False
+
 class GoogleScholarFetcher:
-    """Fetch publications from Google Scholar"""
+    """Fetch publications from Google Scholar using the scholarly package"""
     
-    def __init__(self, headless: bool = True):
-        self.headless = headless
+    def __init__(self):
         self.normalizer = PublicationNormalizer()
-        self.driver = None
-    
-    def __enter__(self):
-        self._setup_driver()
-        return self
-    
-    def __exit__(self, exc_type, exc_val, exc_tb):
-        if self.driver:
-            self.driver.quit()
-    
-    def _setup_driver(self):
-        """Setup Chrome driver with appropriate options"""
-        try:
-            chrome_options = Options()
-            if self.headless:
-                chrome_options.add_argument("--headless")
-            chrome_options.add_argument("--no-sandbox")
-            chrome_options.add_argument("--disable-dev-shm-usage")
-            chrome_options.add_argument("--disable-gpu")
-            chrome_options.add_argument("--window-size=1920,1080")
-            chrome_options.add_argument("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36")
-            
-            service = Service(ChromeDriverManager().install())
-            self.driver = webdriver.Chrome(service=service, options=chrome_options)
-            
-        except Exception as e:
-            logger.error(f"Error setting up Chrome driver: {e}")
-            raise
     
     def fetch_publications(self, scholar_id: str = None, author_name: str = None) -> List[Publication]:
         """Fetch publications from Google Scholar"""
-        if not self.driver:
-            self._setup_driver()
+        if not SCHOLARLY_AVAILABLE:
+            logger.error("scholarly package not available. Please install with: pip install scholarly")
+            return []
         
         publications = []
         
@@ -74,29 +47,55 @@ class GoogleScholarFetcher:
         publications = []
         
         try:
-            # Build URL for the author's profile
-            url = f"https://scholar.google.com/citations?user={scholar_id}&hl=en"
-            
             logger.info(f"Fetching Google Scholar profile: {scholar_id}")
-            self.driver.get(url)
             
-            # Wait for page to load
-            time.sleep(2)
+            # Get author by Scholar ID
+            author = scholarly.search_author_id(scholar_id)
+            author = scholarly.fill(author, sections=['publications'])
             
-            # Handle "Show more" button to load all publications
-            self._load_all_publications()
+            # Process publications in parallel for speed
+            pub_list = author.get('publications', [])
+            logger.info(f"Processing {len(pub_list)} publications from Google Scholar in parallel...")
             
-            # Find all publication rows
-            pub_elements = self.driver.find_elements(By.CSS_SELECTOR, "tr.gsc_a_tr")
-            
-            for pub_element in pub_elements:
-                pub = self._parse_scholar_publication_row(pub_element)
-                if pub:
-                    publications.append(pub)
+            publications = self._process_publications_parallel(pub_list, max_workers=100)
                     
         except Exception as e:
             logger.error(f"Error fetching by Google Scholar ID: {e}")
             
+        return publications
+    
+    def _process_publications_parallel(self, pub_list: List, max_workers: int = 5) -> List[Publication]:
+        """Process publications in parallel to improve speed"""
+        publications = []
+        
+        def process_single_publication(pub_data):
+            """Process a single publication with error handling"""
+            try:
+                # Fill publication details
+                pub_filled = scholarly.fill(pub_data)
+                pub = self._parse_scholarly_publication(pub_filled)
+                if pub:
+                    return pub
+            except Exception as e:
+                logger.debug(f"Error processing publication: {e}")
+            return None
+        
+        # Use ThreadPoolExecutor for parallel processing
+        with ThreadPoolExecutor(max_workers=max_workers) as executor:
+            # Submit all tasks
+            future_to_pub = {executor.submit(process_single_publication, pub_data): pub_data 
+                           for pub_data in pub_list}
+            
+            # Collect results as they complete
+            for future in as_completed(future_to_pub):
+                try:
+                    result = future.result(timeout=30)  # 30 second timeout per publication
+                    if result:
+                        publications.append(result)
+                except Exception as e:
+                    logger.debug(f"Error in parallel processing: {e}")
+                    continue
+        
         return publications
     
     def _fetch_by_author_name(self, author_name: str) -> List[Publication]:
@@ -104,140 +103,95 @@ class GoogleScholarFetcher:
         publications = []
         
         try:
-            # Search for the author
-            search_url = f"https://scholar.google.com/citations?hl=en&view_op=search_authors&mauthors={author_name}"
-            
             logger.info(f"Searching Google Scholar for: {author_name}")
-            self.driver.get(search_url)
             
-            time.sleep(2)
+            # Search for authors
+            search_query = scholarly.search_author(author_name)
             
-            # Find the first author profile link
-            author_links = self.driver.find_elements(By.CSS_SELECTOR, "h3.gs_ai_name a")
-            
-            if author_links:
-                # Click on the first author profile
-                author_links[0].click()
-                time.sleep(2)
+            # Get the first matching author
+            try:
+                author = next(search_query)
+                author = scholarly.fill(author, sections=['publications'])
                 
-                # Load all publications
-                self._load_all_publications()
-                
-                # Find all publication rows
-                pub_elements = self.driver.find_elements(By.CSS_SELECTOR, "tr.gsc_a_tr")
-                
-                for pub_element in pub_elements:
-                    pub = self._parse_scholar_publication_row(pub_element)
-                    if pub:
-                        publications.append(pub)
+                # Process publications in parallel
+                pub_list = author.get('publications', [])
+                logger.info(f"Processing {len(pub_list)} publications from Google Scholar search in parallel...")
+                publications = self._process_publications_parallel(pub_list, max_workers=3)
                         
+            except StopIteration:
+                logger.warning(f"No author found for: {author_name}")
+                
         except Exception as e:
             logger.error(f"Error searching Google Scholar by name: {e}")
             
         return publications
     
-    def _load_all_publications(self):
-        """Click 'Show more' button to load all publications"""
-        try:
-            max_attempts = 10
-            attempts = 0
-            
-            while attempts < max_attempts:
-                try:
-                    # Look for "Show more" button
-                    show_more_button = WebDriverWait(self.driver, 5).until(
-                        EC.element_to_be_clickable((By.ID, "gsc_bpf_more"))
-                    )
-                    
-                    if show_more_button.is_displayed() and show_more_button.is_enabled():
-                        show_more_button.click()
-                        time.sleep(2)
-                        attempts += 1
-                    else:
-                        break
-                        
-                except Exception:
-                    # No more "Show more" button or it's not clickable
-                    break
-                    
-        except Exception as e:
-            logger.debug(f"Finished loading publications: {e}")
-    
-    def _parse_scholar_publication_row(self, pub_element) -> Optional[Publication]:
-        """Parse a single publication row from Google Scholar"""
+    def _parse_scholarly_publication(self, pub_data: dict) -> Optional[Publication]:
+        """Parse publication data from scholarly package"""
         try:
             # Extract title
-            title_element = pub_element.find_element(By.CSS_SELECTOR, "a.gsc_a_at")
-            title = self.normalizer.clean_title(title_element.text)
+            title = pub_data.get('bib', {}).get('title', '')
+            title = self.normalizer.clean_title(title)
             
             if not title:
                 return None
             
-            # Extract authors and journal from the second column
-            details_element = pub_element.find_element(By.CSS_SELECTOR, "div.gs_gray")
-            details_text = details_element.text
-            
+            # Extract authors
             authors = []
-            journal = ""
-            
-            # Parse details (format: "Authors - Journal, Year")
-            if " - " in details_text:
-                parts = details_text.split(" - ", 1)
-                authors_text = parts[0]
-                venue_text = parts[1] if len(parts) > 1 else ""
-                
-                # Parse authors
-                author_names = [name.strip() for name in authors_text.split(",")]
+            author_list = pub_data.get('bib', {}).get('author', [])
+            if isinstance(author_list, list):
+                for author in author_list:
+                    if author:
+                        authors.append(self.normalizer.normalize_author_name(author))
+            elif isinstance(author_list, str):
+                # Sometimes authors come as a string
+                author_names = [name.strip() for name in author_list.split(' and ')]
                 for name in author_names:
                     if name:
                         authors.append(self.normalizer.normalize_author_name(name))
-                
-                # Extract journal and year from venue text
-                if venue_text:
-                    # Try to separate journal from year
-                    year_match = re.search(r'(\d{4})', venue_text)
-                    if year_match:
-                        year_str = year_match.group(1)
-                        journal = venue_text.replace(year_str, "").strip(", ")
-                    else:
-                        journal = venue_text
             
-            # Extract year from the third column
+            # Extract journal/venue
+            journal = pub_data.get('bib', {}).get('venue', '') or pub_data.get('bib', {}).get('journal', '')
+            
+            # Extract year
             year = 0
-            try:
-                year_element = pub_element.find_element(By.CSS_SELECTOR, "span.gsc_a_h")
-                year_text = year_element.text.strip()
-                if year_text and year_text.isdigit():
-                    year = int(year_text)
-            except:
-                pass
+            year_str = pub_data.get('bib', {}).get('pub_year', '')
+            if year_str:
+                try:
+                    year = int(year_str)
+                except (ValueError, TypeError):
+                    year = 0
             
-            # Extract citation count
-            try:
-                citation_element = pub_element.find_element(By.CSS_SELECTOR, "a.gsc_a_ac")
-                citation_text = citation_element.text
-                # This could be used for ranking/sorting later
-            except:
-                pass
+            # Extract URL/DOI
+            url = pub_data.get('pub_url', '') or pub_data.get('eprint_url', '')
             
-            # Try to get more details by clicking on the publication
-            pub_url = ""
-            try:
-                pub_link = title_element.get_attribute("href")
-                if pub_link:
-                    pub_url = pub_link
-            except:
-                pass
+            # Extract abstract
+            abstract = pub_data.get('bib', {}).get('abstract', '')
+            
+            # Extract volume and pages
+            volume = pub_data.get('bib', {}).get('volume', '')
+            pages = pub_data.get('bib', {}).get('pages', '')
             
             # Determine publication type
-            pub_type = self.normalizer.detect_publication_type(journal, journal, "")
+            pub_type = self.normalizer.detect_publication_type(journal, journal, "", title, "")
+            
+            # Try to extract DOI from URL or other fields
+            doi = ""
+            if url:
+                doi_match = re.search(r'10\.\d+/[^\s]+', url)
+                if doi_match:
+                    doi = doi_match.group()
             
             publication = Publication(
                 title=title,
                 authors=authors,
                 journal=journal,
                 year=year,
-                url=pub_url,
+                url=url,
+                doi=doi,
+                abstract=abstract,
+                volume=volume,
+                pages=pages,
                 type=pub_type,
                 venue=journal
             )
@@ -245,7 +199,7 @@ class GoogleScholarFetcher:
             return publication
             
         except Exception as e:
-            logger.error(f"Error parsing Google Scholar publication: {e}")
+            logger.error(f"Error parsing scholarly publication: {e}")
             return None
 
 class WebOfScienceFetcher:

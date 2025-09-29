@@ -9,7 +9,7 @@ author:
   # Academic Profile IDs (get these from your profile URLs)
   orcid_id: "0000-0001-5122-992X"
   google_scholar_id: "g9RL-QcAAAAJ"  # From your Google Scholar profile URL
-  scopus_author_id: "57204622726"  # Optional: Your Scopus Author ID
+  # scopus_author_id: "57204622726"  # Optional: Your Scopus Author ID - commented out to test name search
   
   # Contact
   email: "marco.avesani@unipd.it"
@@ -19,11 +19,11 @@ fetching:
   # Default sources to fetch from
   default_sources:
     - "arxiv"
-    - "crossref" 
+    #- "crossref" 
     - "orcid"
-    - "scholar"
-    - "scopus"  # Requires API key
-    - "wos"     # Requires API key
+    # - "scholar"  # Disabled for now - too slow
+    #- "scopus"  # Requires API key
+    #- "wos"     # Requires API key
   
   # Maximum number of publications to fetch per source
   max_results_per_source: 200
@@ -77,13 +77,12 @@ jekyll:
     code: "btn btn--success"
     data: "btn btn--warning"
 
-# API Configuration (set these as environment variables or GitHub secrets)
+# API Configuration
 api_keys:
-  # Optional: Scopus API key for more comprehensive data
-  # Get from: https://dev.elsevier.com/
-  scopus_api_key_env: "SCOPUS_API_KEY"
+  # Scopus API key - get from: https://dev.elsevier.com/
+  scopus_api_key: "d78321743b25613d83bf3c86729de007"
   
-  # Optional: Web of Science API key
+  # Web of Science API key (environment variable name)
   # Requires institutional subscription
   wos_api_key_env: "WOS_API_KEY"
 

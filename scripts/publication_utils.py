@@ -53,6 +53,15 @@ class Publication:
     
     def generate_markdown_content(self, highlight_author: str = "M. Avesani") -> str:
         """Generate markdown content for Jekyll"""
+        # Determine the primary paper URL (prioritize DOI for journals, arXiv for preprints)
+        paper_url = ""
+        if self.doi:
+            paper_url = f"https://doi.org/{self.doi}"
+        elif self.arxiv_id:
+            paper_url = f"https://arxiv.org/abs/{self.arxiv_id}"
+        elif self.url:
+            paper_url = self.url
+            
         content = f"""---
 title: "{self.title}"
 collection: publications
@@ -60,7 +69,7 @@ permalink: /publication/{self.get_citation_key()}
 excerpt: '{self.abstract[:200]}...' if len(self.abstract) > 200 else self.abstract
 date: {self.year}-01-01
 venue: '{self.venue or self.journal}'
-paperurl: '{self.url}'
+paperurl: '{paper_url}'
 citation: '{self.format_citation()}'
 ---
 
@@ -70,18 +79,31 @@ citation: '{self.format_citation()}'
 
 """
         
-        # Add links
+        # Add links - always show both journal and arXiv for journal papers
         links = []
-        if self.url:
-            links.append(f"[Paper]({self.url}){{: .btn .btn--info}}")
-        if self.arxiv_id:
-            arxiv_url = f"https://arxiv.org/abs/{self.arxiv_id}"
-            links.append(f"[ArXiv]({arxiv_url}){{: .btn .btn--info}}")
-        if self.pdf_url:
+        
+        # For journal papers, show journal link first, then arXiv
+        if self.type.lower() == 'journal':
+            if self.doi:
+                journal_url = f"https://doi.org/{self.doi}"
+                links.append(f"[Journal]({journal_url}){{: .btn .btn--info}}")
+            elif self.url and (not self.arxiv_id or self.url != f"https://arxiv.org/abs/{self.arxiv_id}"):
+                links.append(f"[Journal]({self.url}){{: .btn .btn--info}}")
+                
+            if self.arxiv_id:
+                arxiv_url = f"https://arxiv.org/abs/{self.arxiv_id}"
+                links.append(f"[ArXiv]({arxiv_url}){{: .btn .btn--info}}")
+        else:
+            # For preprints, show arXiv first, then other URLs
+            if self.arxiv_id:
+                arxiv_url = f"https://arxiv.org/abs/{self.arxiv_id}"
+                links.append(f"[ArXiv]({arxiv_url}){{: .btn .btn--info}}")
+            elif self.url:
+                links.append(f"[Paper]({self.url}){{: .btn .btn--info}}")
+                
+        # Add PDF link if different from arXiv PDF
+        if self.pdf_url and (not self.arxiv_id or self.pdf_url != f"https://arxiv.org/pdf/{self.arxiv_id}.pdf"):
             links.append(f"[PDF]({self.pdf_url}){{: .btn .btn--info}}")
-        if self.doi:
-            doi_url = f"https://doi.org/{self.doi}"
-            links.append(f"[DOI]({doi_url}){{: .btn .btn--info}}")
             
         if links:
             content += "\n" + " ".join(links) + "\n"
@@ -163,22 +185,42 @@ class PublicationNormalizer:
         return title
     
     @staticmethod
-    def detect_publication_type(venue: str, journal: str, arxiv_id: str) -> str:
-        """Detect publication type based on venue/journal information"""
+    def detect_publication_type(venue: str, journal: str, arxiv_id: str, title: str = "", doi: str = "") -> str:
+        """Detect publication type based on venue/journal information and other clues"""
         venue_lower = (venue or "").lower()
         journal_lower = (journal or "").lower()
+        title_lower = (title or "").lower()
+        
+        # Conference indicators in title or venue
+        conference_indicators = [
+            "conference", "proceedings", "workshop", "symposium", "congress",
+            "meeting", "session", "presentation", "talk", "poster"
+        ]
+        
+        # Journal indicators
+        journal_indicators = [
+            "journal", "letters", "review", "transactions", "magazine",
+            "communications", "reports", "advances", "nature", "science",
+            "physical review", "ieee", "optics", "quantum"
+        ]
         
         if arxiv_id and not journal:
             return "preprint"
-        elif any(word in venue_lower or word in journal_lower 
-                for word in ["conference", "proceedings", "workshop", "symposium"]):
+        elif any(word in venue_lower or word in journal_lower or word in title_lower
+                for word in conference_indicators):
             return "conference"
         elif any(word in venue_lower or word in journal_lower 
-                for word in ["journal", "letters", "review", "transactions"]):
+                for word in journal_indicators):
             return "journal"
         elif any(word in venue_lower or word in journal_lower 
                 for word in ["book", "chapter"]):
             return "book"
+        elif doi and "11577" in doi:
+            # DOIs containing "11577" are conference papers
+            return "conference"
+        elif not venue and not journal and doi and "/" not in doi:
+            # Suspicious DOI format often indicates conference or incomplete record
+            return "conference"
         else:
             return "journal"  # default
 
@@ -190,44 +232,104 @@ class PublicationDeduplicator:
         """Compute similarity score between two publications"""
         score = 0.0
         
-        # Title similarity (most important)
-        title1 = pub1.title.lower().strip()
-        title2 = pub2.title.lower().strip()
+        # DOI/ArXiv ID exact match (highest priority)
+        if pub1.doi and pub2.doi and pub1.doi.lower().strip() == pub2.doi.lower().strip():
+            return 1.0  # Perfect match
+        if pub1.arxiv_id and pub2.arxiv_id and pub1.arxiv_id.lower().strip() == pub2.arxiv_id.lower().strip():
+            return 1.0  # Perfect match
         
+        # URL similarity for same DOI with different formats
+        if pub1.url and pub2.url:
+            # Extract DOI from URLs if present
+            doi_pattern = r'10\.\d+/[^\s]+'
+            doi1_match = re.search(doi_pattern, pub1.url)
+            doi2_match = re.search(doi_pattern, pub2.url) 
+            if doi1_match and doi2_match and doi1_match.group() == doi2_match.group():
+                return 1.0  # Same DOI in URLs
+        
+        # Normalize titles for comparison
+        title1 = re.sub(r'[^\w\s]', '', pub1.title.lower().strip())
+        title2 = re.sub(r'[^\w\s]', '', pub2.title.lower().strip())
+        title1 = re.sub(r'\s+', ' ', title1)
+        title2 = re.sub(r'\s+', ' ', title2)
+        
+        # Title similarity (very important)
         if title1 == title2:
-            score += 0.5
+            score += 0.4
         elif title1 in title2 or title2 in title1:
-            score += 0.3
+            score += 0.35
         else:
-            # Simple word overlap
+            # Word overlap for titles - be more aggressive
             words1 = set(title1.split())
             words2 = set(title2.split())
-            if words1 and words2:
+            if words1 and words2 and len(words1) > 2 and len(words2) > 2:
                 overlap = len(words1.intersection(words2)) / len(words1.union(words2))
-                score += overlap * 0.3
+                # Check for key phrase matches that indicate same paper
+                key_phrases1 = [' '.join(words1)[i:i+20] for i in range(0, len(' '.join(words1)), 5)]
+                key_phrases2 = [' '.join(words2)[i:i+20] for i in range(0, len(' '.join(words2)), 5)]
+                
+                # If significant word overlap or key phrases match
+                if overlap > 0.6:  # Lower threshold for word overlap
+                    score += overlap * 0.35
+                elif any(phrase in ' '.join(words2) for phrase in key_phrases1 if len(phrase) > 15):
+                    score += 0.3  # Partial phrase match
         
-        # Author similarity
-        authors1 = set(author.lower().strip() for author in pub1.authors)
-        authors2 = set(author.lower().strip() for author in pub2.authors)
-        if authors1 and authors2:
-            author_overlap = len(authors1.intersection(authors2)) / len(authors1.union(authors2))
-            score += author_overlap * 0.2
+        # Author similarity (very important for academic papers)
+        authors1 = {author.lower().strip().replace('.', '') for author in pub1.authors if author.strip()}
+        authors2 = {author.lower().strip().replace('.', '') for author in pub2.authors if author.strip()}
         
-        # Year similarity
+        # Special handling for missing authors cases
+        if not authors1 or not authors2:
+            # If titles are identical or very similar, boost score significantly
+            if title1 == title2:
+                score += 0.6  # Very high boost for identical titles
+            elif len(title1) > 10 and len(title2) > 10:
+                # Check if titles are very similar (substring match)
+                if title1 in title2 or title2 in title1:
+                    score += 0.5
+                # Or if most words match
+                words1_set = set(title1.split())
+                words2_set = set(title2.split())
+                if len(words1_set.intersection(words2_set)) / len(words1_set.union(words2_set)) > 0.8:
+                    score += 0.5
+            
+            # Additional boost if years match
+            if pub1.year == pub2.year and pub1.year > 0:
+                score += 0.2
+        elif authors1 and authors2:
+            # Check for exact author matches
+            common_authors = 0
+            for auth1 in authors1:
+                for auth2 in authors2:
+                    # Check if last names match (common in academic citations)
+                    last1 = auth1.split()[-1] if auth1.split() else ''
+                    last2 = auth2.split()[-1] if auth2.split() else ''
+                    if last1 and last2 and len(last1) > 2 and last1 == last2:
+                        common_authors += 1
+                        break
+            
+            if len(authors1) > 0 and len(authors2) > 0:
+                author_similarity = common_authors / max(len(authors1), len(authors2))
+                score += author_similarity * 0.4
+        
+        # Year similarity (less important but still relevant)
         if pub1.year == pub2.year and pub1.year > 0:
             score += 0.1
+        elif pub1.year > 0 and pub2.year > 0 and abs(pub1.year - pub2.year) <= 1:
+            score += 0.05  # Allow for slight year differences
         
-        # DOI/ArXiv ID exact match
-        if pub1.doi and pub2.doi and pub1.doi == pub2.doi:
-            score += 0.2
-        if pub1.arxiv_id and pub2.arxiv_id and pub1.arxiv_id == pub2.arxiv_id:
-            score += 0.2
+        # URL similarity (can help identify duplicates)
+        if pub1.url and pub2.url:
+            url1_clean = pub1.url.lower().replace('http://', '').replace('https://', '').replace('www.', '')
+            url2_clean = pub2.url.lower().replace('http://', '').replace('https://', '').replace('www.', '')
+            if url1_clean == url2_clean:
+                score += 0.1
             
         return score
     
     @staticmethod
     def deduplicate_publications(publications: List[Publication], 
-                               threshold: float = 0.8) -> List[Publication]:
+                               threshold: float = 0.5) -> List[Publication]:
         """Remove duplicate publications based on similarity threshold"""
         if not publications:
             return []
@@ -253,30 +355,77 @@ class PublicationDeduplicator:
     
     @staticmethod
     def merge_publications(primary: Publication, secondary: Publication):
-        """Merge information from secondary publication into primary"""
-        # Update empty fields in primary with data from secondary
-        if not primary.doi and secondary.doi:
-            primary.doi = secondary.doi
-        if not primary.arxiv_id and secondary.arxiv_id:
-            primary.arxiv_id = secondary.arxiv_id
-        if not primary.url and secondary.url:
-            primary.url = secondary.url
-        if not primary.pdf_url and secondary.pdf_url:
-            primary.pdf_url = secondary.pdf_url
-        if not primary.abstract and secondary.abstract:
-            primary.abstract = secondary.abstract
-        if not primary.journal and secondary.journal:
-            primary.journal = secondary.journal
-        if not primary.venue and secondary.venue:
-            primary.venue = secondary.venue
-        if not primary.bibtex and secondary.bibtex:
-            primary.bibtex = secondary.bibtex
+        """Merge information from secondary publication into primary, prioritizing journal info."""
+        
+        # Determine which publication has more complete information
+        primary_completeness = len([f for f in [primary.title, primary.journal, primary.doi, primary.arxiv_id] if f]) + len(primary.authors)
+        secondary_completeness = len([f for f in [secondary.title, secondary.journal, secondary.doi, secondary.arxiv_id] if f]) + len(secondary.authors)
+        
+        # Choose the more complete publication as the base
+        if secondary_completeness > primary_completeness:
+            primary, secondary = secondary, primary
+        
+        # Determine publication types
+        is_primary_journal = primary.type == 'journal'
+        is_secondary_journal = secondary.type == 'journal'
+        is_primary_preprint = primary.type == 'preprint'
+        is_secondary_preprint = secondary.type == 'preprint'
+
+        # If one is a journal and the other is a preprint, prioritize the journal's metadata
+        if (is_primary_journal and is_secondary_preprint) or (is_secondary_journal and is_primary_preprint):
+            journal_pub = primary if is_primary_journal else secondary
+            preprint_pub = secondary if is_primary_journal else primary
             
-        # Prefer journal publication over preprint
-        if secondary.type == "journal" and primary.type == "preprint":
-            primary.type = secondary.type
-            primary.journal = secondary.journal
-            primary.venue = secondary.venue
+            # Use journal metadata as base
+            primary.title = journal_pub.title if journal_pub.title else preprint_pub.title
+            primary.authors = journal_pub.authors if journal_pub.authors else preprint_pub.authors
+            primary.journal = journal_pub.journal
+            primary.year = journal_pub.year if journal_pub.year > 0 else preprint_pub.year
+            primary.volume = journal_pub.volume
+            primary.pages = journal_pub.pages
+            primary.doi = journal_pub.doi
+            primary.type = 'journal'
+            primary.venue = journal_pub.journal
+            
+            # Preserve arXiv ID from either source
+            primary.arxiv_id = journal_pub.arxiv_id or preprint_pub.arxiv_id
+            
+            # Choose the best URL (prefer DOI)
+            if primary.doi:
+                primary.url = f"https://doi.org/{primary.doi}"
+            elif journal_pub.url:
+                primary.url = journal_pub.url
+            else:
+                primary.url = preprint_pub.url
+        else:
+            # Standard merge logic - fill in missing information
+            if not primary.doi and secondary.doi: 
+                primary.doi = secondary.doi
+            if not primary.arxiv_id and secondary.arxiv_id: 
+                primary.arxiv_id = secondary.arxiv_id
+            if not primary.url and secondary.url: 
+                primary.url = secondary.url
+            if not primary.journal and secondary.journal: 
+                primary.journal = secondary.journal
+            if not primary.venue and secondary.venue: 
+                primary.venue = secondary.venue
+            if not primary.authors: 
+                primary.authors = secondary.authors
+            if not primary.title and secondary.title: 
+                primary.title = secondary.title
+            
+            # Prefer journal type over preprint
+            if is_secondary_journal and not is_primary_journal:
+                primary.type = "journal"
+                if secondary.journal: primary.journal = secondary.journal
+                if secondary.venue: primary.venue = secondary.venue
+
+        # Always merge additional metadata
+        if not primary.pdf_url and secondary.pdf_url: primary.pdf_url = secondary.pdf_url
+        if not primary.abstract and secondary.abstract: primary.abstract = secondary.abstract
+        if not primary.bibtex and secondary.bibtex: primary.bibtex = secondary.bibtex
+        if not primary.volume and secondary.volume: primary.volume = secondary.volume
+        if not primary.pages and secondary.pages: primary.pages = secondary.pages
 
 def load_config() -> Dict:
     """Load configuration from config file or return defaults"""

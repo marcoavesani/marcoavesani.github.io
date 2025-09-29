@@ -21,6 +21,7 @@ from publication_utils import (
 from arxiv_crossref_fetcher import ArxivFetcher, CrossRefFetcher, DOIFetcher
 from orcid_scopus_fetcher import ORCIDFetcher, ScopusFetcher
 from scholar_wos_fetcher import GoogleScholarFetcher, WebOfScienceFetcher
+from enhanced_publication_matcher import EnhancedPublicationMatcher
 
 # Set up logging
 logging.basicConfig(
@@ -43,17 +44,24 @@ class PublicationAggregator:
         self.orcid_fetcher = ORCIDFetcher()
         
         # Initialize optional fetchers (require API keys or special setup)
-        self.scopus_fetcher = ScopusFetcher(
-            api_key=os.getenv('d78321743b25613d83bf3c86729de007')
+        # Get API key from config or environment variable
+        scopus_api_key = (
+            config.get('api_keys', {}).get('scopus_api_key') or 
+            os.getenv('SCOPUS_API_KEY')
         )
+        self.scopus_fetcher = ScopusFetcher(api_key=scopus_api_key)
         self.wos_fetcher = WebOfScienceFetcher(
             api_key=os.getenv('WOS_API_KEY')
         )
+        
+        # Enhanced publication matcher for arXiv-centric strategy
+        self.enhanced_matcher = EnhancedPublicationMatcher()
+        self.google_scholar_fetcher = GoogleScholarFetcher()
     
     def fetch_all_publications(self, sources: List[str] = None) -> List[Publication]:
         """Fetch publications from all specified sources"""
         if sources is None:
-            sources = ['arxiv', 'crossref', 'orcid', 'scholar']
+            sources = ['arxiv', 'crossref', 'orcid']  # Removed 'scholar' - too slow
         
         all_publications = []
         
@@ -89,6 +97,8 @@ class PublicationAggregator:
                     self.config['orcid_id']
                 )
                 all_publications.extend(orcid_pubs)
+                for i in range(len(orcid_pubs)):
+                    print(f"ORCID Publication {i+1}: {orcid_pubs[i]}")
                 logger.info(f"ORCID: {len(orcid_pubs)} publications")
             except Exception as e:
                 logger.error(f"Error fetching from ORCID: {e}")
@@ -97,26 +107,41 @@ class PublicationAggregator:
         if 'scholar' in sources and self.config.get('google_scholar_id'):
             logger.info("Fetching from Google Scholar...")
             try:
-                with GoogleScholarFetcher() as scholar_fetcher:
-                    scholar_pubs = scholar_fetcher.fetch_publications(
-                        scholar_id=self.config['google_scholar_id']
-                    )
-                    all_publications.extend(scholar_pubs)
-                    logger.info(f"Google Scholar: {len(scholar_pubs)} publications")
+                scholar_fetcher = GoogleScholarFetcher()
+                scholar_pubs = scholar_fetcher.fetch_publications(
+                    scholar_id=self.config['google_scholar_id']
+                )
+                all_publications.extend(scholar_pubs)
+                logger.info(f"Google Scholar: {len(scholar_pubs)} publications")
             except Exception as e:
                 logger.error(f"Error fetching from Google Scholar: {e}")
         
         # Fetch from Scopus (if API key available)
-        if 'scopus' in sources and os.getenv('SCOPUS_API_KEY'):
-            logger.info("Fetching from Scopus...")
-            try:
-                scopus_pubs = self.scopus_fetcher.fetch_publications(
-                    author_name=self.config['author_name']
-                )
-                all_publications.extend(scopus_pubs)
-                logger.info(f"Scopus: {len(scopus_pubs)} publications")
-            except Exception as e:
-                logger.error(f"Error fetching from Scopus: {e}")
+        if 'scopus' in sources:
+            scopus_api_key = (
+                self.config.get('api_keys', {}).get('scopus_api_key') or 
+                os.getenv('SCOPUS_API_KEY')
+            )
+            if scopus_api_key:
+                logger.info("Fetching from Scopus...")
+                try:
+                    # Try to fetch by author ID first, then by name
+                    scopus_author_id = self.config.get('scopus_author_id')
+                    if scopus_author_id:
+                        scopus_pubs = self.scopus_fetcher.fetch_publications(
+                            author_id=scopus_author_id
+                        )
+                    else:
+                        scopus_pubs = self.scopus_fetcher.fetch_publications(
+                            author_name=self.config['author_name']
+                        )
+                    all_publications.extend(scopus_pubs)
+                    logger.info(f"Scopus: {len(scopus_pubs)} publications")
+                except Exception as e:
+                    logger.error(f"Error fetching from Scopus: {e}")
+            else:
+                logger.warning("Scopus requested but no API key found in config.yml or SCOPUS_API_KEY environment variable. "
+                              "See scripts/SCOPUS_SETUP.md for instructions on getting an API key. Skipping Scopus.")
         
         # Fetch from Web of Science (if API key available)
         if 'wos' in sources and os.getenv('WOS_API_KEY'):
@@ -142,14 +167,155 @@ class PublicationAggregator:
         if potential_duplicates:
             logger.info(f"Potential duplicates by title: {potential_duplicates}")
         
+        # Debug: Check for publications with missing authors
+        missing_authors = [pub for pub in all_publications if not pub.authors]
+        logger.info(f"Publications with missing authors: {len(missing_authors)}")
+        
         # Deduplicate publications
-        deduplicated = PublicationDeduplicator.deduplicate_publications(all_publications, threshold=0.7)
+        deduplicated = PublicationDeduplicator.deduplicate_publications(all_publications, threshold=0.5)
         logger.info(f"Publications after deduplication: {len(deduplicated)}")
+        
+        # Debug: Check remaining publications with missing authors
+        remaining_missing_authors = [pub for pub in deduplicated if not pub.authors]
+        logger.info(f"Remaining publications with missing authors: {len(remaining_missing_authors)}")
+        if remaining_missing_authors:
+            for pub in remaining_missing_authors[:5]:  # Show first 5
+                logger.info(f"  - Missing authors: '{pub.title}' ({pub.year}) from {pub.type}")
         
         # Sort by year (descending) and then by title
         deduplicated.sort(key=lambda p: (-p.year if p.year else 0, p.title.lower()))
         
         return deduplicated
+    
+    def fetch_publications_enhanced_strategy(self) -> List[Publication]:
+        """
+        Enhanced arXiv-centric strategy:
+        1. Fetch all publications from arXiv (primary source)
+        2. Fetch publications from ORCID and Scholar (for journal metadata)
+        3. Match and enrich arXiv papers with journal information
+        """
+        logger.info("Using enhanced arXiv-centric publication fetching strategy")
+        
+        # Step 1: Fetch from arXiv as primary source
+        logger.info("Step 1: Fetching from arXiv (primary source)...")
+        arxiv_pubs = []
+        try:
+            arxiv_pubs = self.arxiv_fetcher.search_by_author(self.config['author_name'])
+            logger.info(f"Found {len(arxiv_pubs)} publications on arXiv")
+        except Exception as e:
+            logger.error(f"Error fetching from arXiv: {e}")
+        
+        # Step 2: Fetch from ORCID for journal metadata
+        logger.info("Step 2: Fetching from ORCID for journal metadata...")
+        orcid_pubs = []
+        if self.config.get('orcid_id'):
+            try:
+                orcid_pubs = self.orcid_fetcher.fetch_publications(self.config['orcid_id'])
+                logger.info(f"Found {len(orcid_pubs)} publications on ORCID")
+            except Exception as e:
+                logger.error(f"Error fetching from ORCID: {e}")
+        
+        # Step 3: Fetch from Google Scholar for additional metadata
+        logger.info("Step 3: Fetching from Google Scholar for additional metadata...")
+        scholar_pubs = []
+        if self.config.get('google_scholar_id'):
+            try:
+                scholar_pubs = self.google_scholar_fetcher.fetch_publications(
+                    scholar_id=self.config['google_scholar_id']
+                )
+                logger.info(f"Found {len(scholar_pubs)} publications on Google Scholar")
+            except Exception as e:
+                logger.error(f"Error fetching from Google Scholar: {e}")
+        
+        # Step 4: Enhance arXiv publications with journal information
+        logger.info("Step 4: Enriching arXiv publications with journal metadata...")
+        enhanced_pubs = self.enhanced_matcher.enrich_arxiv_publications(
+            arxiv_pubs, orcid_pubs, scholar_pubs
+        )
+        
+        # Step 4.5: Ensure proper classification between preprints and journal papers
+        logger.info("Step 4.5: Classifying publications as preprints vs peer-reviewed...")
+        preprint_count = 0
+        journal_count = 0
+        for pub in enhanced_pubs:
+            # Check if it has meaningful journal information (not just arXiv)
+            has_real_journal = (pub.journal and pub.journal.strip() and 
+                               not any(keyword in pub.journal.lower() 
+                                     for keyword in ['arxiv', 'preprint', 'e-print']))
+            has_doi = pub.doi and pub.doi.strip()
+            
+            # More specific check: if the title or journal contains "preprint", it's likely a preprint
+            is_preprint_pattern = (pub.journal and 
+                                 any(keyword in pub.journal.lower() 
+                                   for keyword in ['preprint', 'e-print']))
+            
+            if has_real_journal and has_doi and not is_preprint_pattern:
+                # Has real journal information and DOI - it's a peer-reviewed paper
+                pub.type = "journal"
+                journal_count += 1
+                logger.debug(f"Classified as journal: '{pub.title[:50]}...' (journal: '{pub.journal}', doi: '{pub.doi}')")
+            else:
+                # arXiv-only paper or preprint - it's a preprint
+                pub.type = "preprint"
+                preprint_count += 1
+                logger.debug(f"Classified as preprint: '{pub.title[:50]}...' (journal: '{pub.journal}', doi: '{pub.doi}')")
+        
+        logger.info(f"Classification results: {journal_count} journal papers, {preprint_count} preprints")
+        
+        # Step 5: Skip adding unmatched publications - keep arXiv-centric approach
+        logger.info("Step 5: Skipping unmatched publications - using pure arXiv-centric strategy")
+        
+        # Skip deduplication for arXiv-centric strategy to preserve all arXiv papers
+        logger.info("Skipping deduplication to preserve all arXiv publications")
+        deduplicated = enhanced_pubs
+        
+        # Get statistics
+        stats = self.enhanced_matcher.get_publication_statistics(deduplicated)
+        logger.info(f"Enhanced strategy results:")
+        logger.info(f"  Total publications: {stats['total']}")
+        logger.info(f"  With arXiv IDs: {stats['with_arxiv']}")
+        logger.info(f"  With journal info: {stats['with_journal']}")
+        logger.info(f"  With DOIs: {stats['with_doi']}")
+        logger.info(f"  Journal papers: {stats['journal_papers']}")
+        logger.info(f"  Preprints: {stats['preprints']}")
+        
+        # Sort by year (descending) and then by title
+        deduplicated.sort(key=lambda p: (-p.year if p.year else 0, p.title.lower()))
+        
+        return deduplicated
+    
+    def _find_unmatched_publications(self, enhanced_pubs: List[Publication], 
+                                   other_pubs: List[Publication]) -> List[Publication]:
+        """Find publications from other sources that weren't matched with arXiv papers"""
+        unmatched = []
+        
+        # Get titles from enhanced publications for comparison
+        enhanced_titles = {self.enhanced_matcher.normalizer.clean_title(p.title) for p in enhanced_pubs}
+        
+        for other_pub in other_pubs:
+            other_title = self.enhanced_matcher.normalizer.clean_title(other_pub.title)
+            
+            # Check if this publication is already represented
+            if other_title not in enhanced_titles:
+                # Do a more thorough check for partial matches
+                is_duplicate = False
+                for enhanced_title in enhanced_titles:
+                    similarity = self._calculate_title_similarity(other_title, enhanced_title)
+                    if similarity > 0.85:  # High similarity threshold
+                        is_duplicate = True
+                        break
+                
+                if not is_duplicate:
+                    unmatched.append(other_pub)
+                    logger.debug(f"Adding unmatched publication: '{other_pub.title[:50]}...'")
+        
+        logger.info(f"Found {len(unmatched)} unmatched publications from other sources")
+        return unmatched
+    
+    def _calculate_title_similarity(self, title1: str, title2: str) -> float:
+        """Calculate similarity between two publication titles"""
+        from difflib import SequenceMatcher
+        return SequenceMatcher(None, title1, title2).ratio()
 
 class JekyllPublicationGenerator:
     """Generate Jekyll markdown files for publications"""
@@ -359,7 +525,7 @@ def main():
     parser = argparse.ArgumentParser(description='Fetch and update academic publications')
     parser.add_argument('--sources', nargs='+', 
                        choices=['arxiv', 'crossref', 'orcid', 'scholar', 'scopus', 'wos'],
-                       default=['arxiv', 'crossref', 'orcid', 'scholar'],
+                       default=['arxiv', 'crossref', 'orcid'],  # Removed 'scholar' - too slow
                        help='Sources to fetch from')
     parser.add_argument('--cache-file', default='publications_cache.json',
                        help='Cache file for publications')
@@ -367,6 +533,8 @@ def main():
                        help='Only update cache, do not generate files')
     parser.add_argument('--use-cache', action='store_true',
                        help='Use cached publications instead of fetching')
+    parser.add_argument('--enhanced-strategy', action='store_true', default=True,
+                       help='Use enhanced arXiv-centric strategy with journal metadata enrichment (default)')
     
     args = parser.parse_args()
     
@@ -375,8 +543,27 @@ def main():
     site_root = os.path.dirname(script_dir)
     cache_file = os.path.join(script_dir, args.cache_file)
     
-    # Load configuration
+    # Load configuration - start with basic config, then merge with full config.yml
     config = load_config()
+    
+    # Load full config from config.yml if available
+    config_path = os.path.join(script_dir, 'config.yml')
+    if os.path.exists(config_path):
+        import yaml
+        with open(config_path, 'r', encoding='utf-8') as f:
+            full_config = yaml.safe_load(f) or {}
+            # Merge author info
+            if 'author' in full_config:
+                config.update({
+                    'author_name': full_config['author'].get('name', config['author_name']),
+                    'orcid_id': full_config['author'].get('orcid_id', config['orcid_id']),
+                    'google_scholar_id': full_config['author'].get('google_scholar_id', config['google_scholar_id']),
+                    'scopus_author_id': full_config['author'].get('scopus_author_id', ''),
+                    'email': full_config['author'].get('email', config['email']),
+                })
+            # Add other config sections
+            config.update(full_config)
+    
     logger.info(f"Loaded config for author: {config['author_name']}")
     
     # Initialize aggregator and generator
@@ -387,6 +574,9 @@ def main():
     if args.use_cache:
         logger.info("Loading publications from cache...")
         publications = load_publications_cache(cache_file)
+    elif args.enhanced_strategy:
+        logger.info("Using enhanced arXiv-centric strategy...")
+        publications = aggregator.fetch_publications_enhanced_strategy()
     else:
         logger.info("Fetching publications from sources...")
         publications = aggregator.fetch_all_publications(args.sources)

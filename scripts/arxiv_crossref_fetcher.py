@@ -190,7 +190,7 @@ class CrossRefFetcher:
             url = f"https://doi.org/{doi}" if doi else ""
             
             # Determine publication type
-            pub_type = self.normalizer.detect_publication_type(journal, journal, "")
+            pub_type = self.normalizer.detect_publication_type(journal, journal, "", title, doi)
             
             publication = Publication(
                 title=title,
@@ -290,7 +290,7 @@ class DOIFetcher:
                 pages=pages,
                 doi=doi,
                 url=f"https://doi.org/{doi}",
-                type=self.normalizer.detect_publication_type(journal, journal, ""),
+                type=self.normalizer.detect_publication_type(journal, journal, "", title, doi),
                 venue=journal
             )
             
