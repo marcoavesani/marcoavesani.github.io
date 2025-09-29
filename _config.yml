@@ -10,7 +10,7 @@ locale                   : "en-US"
 title                    : "Marco Avesani"
 title_separator          : "-"
 name                     : &name "Marco Avesani"
-description              : &description "Postdoctoral researcher in Quantum Information - Co-Founder of ThinkQuantum S.R.L."
+description              : &description "Tenure-track Researcher  in Quantum Information - Co-Founder of ThinkQuantum S.R.L."
 url                      : https://marcoavesani.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "marcoavesani/marcoavesani.github.io"
@@ -88,7 +88,7 @@ author:
   pubmed           : 
   googlescholar    : "https://scholar.google.com/citations?user=g9RL-QcAAAAJ"
   email            : "firstname.lastname@unipd.it"
-  researchgate     :  # example: "https://www.researchgate.net/profile/yourprofile"
+  researchgate     : "https://www.researchgate.net/profile/Marco-Avesani"
   uri              :
   bitbucket        :
   codepen          :
