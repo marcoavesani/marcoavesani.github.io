@@ -4,12 +4,6 @@ title: "Talks and presentations"
 permalink: /talks/
 author_profile: true
 ---
-
-<div style="text-align: center; margin-bottom: 20px;">
-  <img src="https://www.padova.com/uploads/events/organizers/1580743466011482351_unipd-universita-di-padova.png?63747962666" alt="University of Padova" style="height: 80px; margin: 10px;">
-  <img src="https://quantumfuture.dei.unipd.it/wp-content/uploads/2024/03/logo_group_big.png" alt="Quantum Future Group" style="height: 80px; margin: 10px;">
-</div>
-
 {% if site.talkmap_link == true %}
 
 <p style="text-decoration:underline;"><a href="/talkmap.html">See a map of all the places I've given a talk!</a></p>
