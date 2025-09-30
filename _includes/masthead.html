@@ -2,7 +2,7 @@
 
 <div class="masthead">
   <div class="masthead__inner-wrap">
-    <div class="masthead__menu" style="display: flex; align-items: center; justify-content: space-between;">
+    <div class="masthead__menu">
       <nav id="site-nav" class="greedy-nav">
         <button><div class="navicon"></div></button>
         <ul class="visible-links">
@@ -15,13 +15,13 @@
             {% endif %}
             <li class="masthead__menu-item"><a href="{{ domain }}{{ link.url }}">{{ link.title }}</a></li>
           {% endfor %}
+          <li class="masthead__menu-item" style="margin-left: 20px;">
+            <img src="https://www.padova.com/uploads/events/organizers/1580743466011482351_unipd-universita-di-padova.png?63747962666" alt="University of Padova" style="height: 40px; margin-right: 10px; vertical-align: middle;">
+            <img src="https://quantumfuture.dei.unipd.it/wp-content/uploads/2024/03/logo_group_big.png" alt="Quantum Future Group" style="height: 40px; vertical-align: middle;">
+          </li>
         </ul>
         <ul class="hidden-links hidden"></ul>
       </nav>
-      <div style="display: flex; align-items: center;">
-        <img src="https://www.padova.com/uploads/events/organizers/1580743466011482351_unipd-universita-di-padova.png?63747962666" alt="University of Padova" style="height: 50px; margin-left: 15px;">
-        <img src="https://quantumfuture.dei.unipd.it/wp-content/uploads/2024/03/logo_group_big.png" alt="Quantum Future Group" style="height: 50px; margin-left: 15px;">
-      </div>
     </div>
   </div>
 </div>
