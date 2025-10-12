@@ -11,7 +11,7 @@ author_profile: true
 
 {%include base_path %}
 
-*Last updated: October 11, 2025*
+*Last updated: October 12, 2025*
 
 ## Preprints
 
@@ -24,8 +24,8 @@ author_profile: true
 * Andrea Peri, Giulio Gualandi, Tommaso Bertapelle, Mattia Sabatini, Giacomo Corrielli, Yoann Piétri, Davide Giacomo Marangon, Giuseppe Vallone, Paolo Villoresi, Roberto Osellame, **Marco Avesani** - *"High-Performance Heterodyne Receiver for Quantum Information Processing in a Laser Written Integrated Photonic Platform"* - arXiv preprint arXiv:2506.08924 (2025) \\
 [ArXiv](https://arxiv.org/abs/2506.08924){: .btn .btn--info}
 
-* Beatriz Lopes da Costa, Matías R Bolaños, Ricardo Chaves, Claudio Narduzzi, **Marco Avesani**, Davide Giacomo Marangon, Andrea Stanco, Giuseppe Vallone, Paolo Villoresi, Yasser Omar - *"Power-consumption Backdoor in Quantum Key Distribution"* - arXiv e-prints (2025) \\
-[ArXiv](https://arxiv.org/abs/2503.11767){: .btn .btn--info}  [Paper](https://ui.adsabs.harvard.edu/abs/2025arXiv250311767L/abstract){: .btn .btn--info}
+* Beatriz Lopes da Costa, Matías R Bolaños, Ricardo Chaves, Claudio Narduzzi, **Marco Avesani**, Davide Giacomo Marangon, Andrea Stanco, Giuseppe Vallone, Paolo Villoresi, Yasser Omar - *"Power-consumption Backdoor in Quantum Key Distribution"* - arXiv preprint arXiv:2503.11767 (2025) \\
+[ArXiv](https://arxiv.org/abs/2503.11767){: .btn .btn--info}
 
 * Lorenzo Coccia, Matteo Padovan, Andrea Pompermaier, Mattia Sabatini, **Marco Avesani**, Davide Giacomo Marangon, Paolo Villoresi, Giuseppe Vallone - *"Quantum bounds and device-independent security with rank-one qubit measurements"* - arXiv preprint arXiv:2503.13282 (2025) \\
 [ArXiv](https://arxiv.org/abs/2503.13282){: .btn .btn--info}
