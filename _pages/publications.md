@@ -11,7 +11,7 @@ author_profile: true
 
 {%include base_path %}
 
-*Last updated: October 20, 2025*
+*Last updated: October 21, 2025*
 
 ## Preprints
 
@@ -26,6 +26,9 @@ author_profile: true
 
 * Andrea Peri, Giulio Gualandi, Tommaso Bertapelle, Mattia Sabatini, Giacomo Corrielli, Yoann Piétri, Davide Giacomo Marangon, Giuseppe Vallone, Paolo Villoresi, Roberto Osellame, **Marco Avesani** - *"High-Performance Heterodyne Receiver for Quantum Information Processing in a Laser Written Integrated Photonic Platform"* - arXiv (2025) \\
 [ArXiv](https://arxiv.org/abs/2506.08924){: .btn .btn--info}
+
+* Alberto De Toni, Edoardo Bortolozzo, Alessandro Emanuele, Marco Venturini, Luca Calderaro, **Marco Avesani**, Giuseppe Vallone, Paolo Villoresi - *"Long-term analysis of efficient-BB84 4-node network with optical switches in metropolitan environment"* - arXiv (2025) \\
+[ArXiv](https://arxiv.org/abs/2510.16867){: .btn .btn--info}
 
 * Beatriz Lopes da Costa, Matías R. Bolaños, Ricardo Chaves, Claudio Narduzzi, **Marco Avesani**, Davide Giacomo Marangon, Andrea Stanco, Giuseppe Vallone, Paolo Villoresi, Yasser Omar - *"Power-consumption Backdoor in Quantum Key Distribution"* - arXiv (2025) \\
 [ArXiv](https://arxiv.org/abs/2503.11767){: .btn .btn--info}
