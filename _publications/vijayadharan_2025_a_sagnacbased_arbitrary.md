@@ -4,9 +4,9 @@ collection: publications
 permalink: /publication/vijayadharan_2025_a_sagnacbased_arbitrary
 excerpt: 'Time-bin encoding of quantum information is highly advantageous for long-distance quantum communication protocols over optical fibres due to its inherent robustness in the channel and the possibility ...' if len(self.abstract) > 200 else self.abstract
 date: 2025-01-01
-venue: 'arXiv'
+venue: 'arXiv preprint arXiv:2506.08971'
 paperurl: 'https://arxiv.org/abs/2506.08971'
-citation: 'Kannan Vijayadharan, Matías Rubén Bolaños, Marco Avesani, Giuseppe Vallone, Paolo Villoresi, Cost..., "A Sagnac-based arbitrary time-bin state encoder for quantum communication applications", arXiv, (2025).'
+citation: 'Kannan Vijayadharan, Matías Rubén Bolaños, Marco Avesani, Giuseppe Vallone, Paolo Villoresi, Cost..., "A Sagnac-based arbitrary time-bin state encoder for quantum communication applications", arXiv preprint arXiv:2506.08971, (2025).'
 ---
 
 Time-bin encoding of quantum information is highly advantageous for long-distance quantum communication protocols over optical fibres due to its inherent robustness in the channel and the possibility of generating high-dimensional quantum states. The most common implementation of time-bin quantum states using unbalanced interferometers presents challenges in terms of stability and flexibility of operation. In particular, a limited number of states can be generated without modifying the optical scheme. Here we present the implementation of a fully controllable arbitrary time-bin quantum state encoder, which is easily scalable to arbitrary dimensions and time-bin widths. The encoder presents high stability and low quantum bit error rate QBER, even at high speeds of operation. Additionally, we demonstrate phase randomization and phase encoding without additional resources.
