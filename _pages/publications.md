@@ -11,7 +11,7 @@ author_profile: true
 
 {%include base_path %}
 
-*Last updated: November 02, 2025*
+*Last updated: November 03, 2025*
 
 ## Preprints
 
@@ -87,27 +87,9 @@ author_profile: true
 * Hamid Tebyanian, **Marco Avesani**, Giuseppe Vallone, Paolo Villoresi - *"Semi-device independent randomness from d-outcome continuous-variable detection"* - Phys. Rev. A (2020) \\
 [ArXiv](https://arxiv.org/abs/2009.08897){: .btn .btn--info}  [Journal](https://doi.org/10.1103/PhysRevA.104.062424){: .btn .btn--info}
 
-* **Marco Avesani**, Hamid Tebyanian, Paolo Villoresi, Giuseppe Vallone - *"Semi-Device-Independent Heterodyne-based Quantum Random Number Generator"* - Phys. Rev. Applied (2020) \\
-[ArXiv](https://arxiv.org/abs/2004.08344){: .btn .btn--info}  [Journal](https://doi.org/10.1103/PhysRevApplied.15.034034){: .btn .btn--info}
-
 * **Marco Avesani**, Costantino Agnesi, Andrea Stanco, Giuseppe Vallone, Paolo Villoresi - *"Stable, low-error and calibration-free polarization encoder for free-space quantum communication"* - Optics Letters Vol. (2020) \\
 [ArXiv](https://arxiv.org/abs/2004.11877){: .btn .btn--info}  [Journal](https://doi.org/10.1364/OL.396412){: .btn .btn--info}
 
 * **Marco Avesani**, Hamid Tebyanian, Paolo Villoresi, Giuseppe Vallone - *"Unbounded randomness from uncharacterized sources"* - Communications Physics volume (2020) \\
 [ArXiv](https://arxiv.org/abs/2010.05798){: .btn .btn--info}  [Journal](https://doi.org/10.1038/s42005-022-01038-3){: .btn .btn--info}
-
-* Costantino Agnesi, **Marco Avesani**, Andrea Stanco, Paolo Villoresi, Giuseppe Vallone - *"All-fiber self-compensating polarization encoder for Quantum Key Distribution"* - Optics Letters Vol. (2019) \\
-[ArXiv](https://arxiv.org/abs/1903.00696){: .btn .btn--info}  [Journal](https://doi.org/10.1364/OL.44.002398){: .btn .btn--info}
-
-* Luca Calderaro, Andrea Stanco, Costantino Agnesi, **Marco Avesani**, Daniele Dequal, Paolo Villoresi, Giuseppe Vallone - *"Fast and simple qubit-based synchronization for quantum key distribution"* - Phys. Rev. Applied (2019) \\
-[ArXiv](https://arxiv.org/abs/1909.12050){: .btn .btn--info}  [Journal](https://doi.org/10.1103/PhysRevApplied.13.054041){: .btn .btn--info}
-
-* Costantino Agnesi, **Marco Avesani**, Luca Calderaro, Andrea Stanco, Giulio Foletto, Mujtaba Zahidy, Alessia Scriminich, Francesco Vedovato, Giuseppe Vallone, Paolo Villoresi - *"Simple Quantum Key Distribution with qubit-based synchronization and a self-compensating polarization encoder"* - Optica (2019) \\
-[ArXiv](https://arxiv.org/abs/1909.12703){: .btn .btn--info}  [Journal](https://doi.org/10.1364/OPTICA.381013){: .btn .btn--info}
-
-* Francesco Vedovato, Costantino Agnesi, Marco Tomasin, **Marco Avesani**, Jan-Åke Larsson, Giuseppe Vallone, Paolo Villoresi - *"Postselection-loophole-free Bell violation with genuine time-bin entanglement"* - Phys. Rev. Lett. (2018) \\
-[ArXiv](https://arxiv.org/abs/1804.10150){: .btn .btn--info}  [Journal](https://doi.org/10.1103/PhysRevLett.121.190401){: .btn .btn--info}
-
-* **Marco Avesani**, Davide G. Marangon, Giuseppe Vallone, Paolo Villoresi - *"Secure heterodyne-based quantum random number generator at 17 Gbps"* - Nature Communications (2018) \\
-[ArXiv](https://arxiv.org/abs/1801.04139){: .btn .btn--info}  [Journal](https://doi.org/10.1038/s41467-018-07585-0){: .btn .btn--info}
 
