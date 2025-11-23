@@ -11,7 +11,7 @@ author_profile: true
 
 {%include base_path %}
 
-*Last updated: November 22, 2025*
+*Last updated: November 23, 2025*
 
 ## Preprints
 
@@ -36,9 +36,6 @@ author_profile: true
 * Davide Scalcon, Matteo Padovan, Paolo Villoresi, Giuseppe Vallone, **Marco Avesani** - *"Versatile Wavelength-Division Multiplexed Quantum Key Distribution Network Operating Simultaneously in the O and C Bands"* - arXiv (2025) \\
 [ArXiv](https://arxiv.org/abs/2507.11175){: .btn .btn--info}
 
-* Matteo Padovan, Giulio Foletto, Lorenzo Coccia, **Marco Avesani**, Paolo Villoresi, Giuseppe Vallone - *"Secure and robust randomness with sequential quantum measurements"* - npj Quantum Information 10, 94 (2024) (2023) \\
-[ArXiv](https://arxiv.org/abs/2309.12286){: .btn .btn--info}
-
 ## Peer-reviewed Journals
 
 * Beatriz Lopes da Costa, Matías R. Bolaños, Ricardo Chaves, Claudio Narduzzi, **Marco Avesani**, Davide Giacomo Marangon, Andrea Stanco, Giuseppe Vallone, Paolo Villoresi, Yasser Omar - *"Power-consumption Backdoor in Quantum Key Distribution"* - Physical Review Applied (2025) \\
@@ -61,6 +58,9 @@ author_profile: true
 
 * Federico Berra, Costantino Agnesi, Andrea Stanco, **Marco Avesani**, Sebastiano Cocchi, Paolo Villoresi, Giuseppe Vallone - *"Modular source for near-infrared quantum communication"* - EPJ Quantum Technol. (2023) \\
 [ArXiv](https://arxiv.org/abs/2301.12882){: .btn .btn--info}  [Journal](https://doi.org/10.1140/epjqt/s40507-023-00185-y){: .btn .btn--info}
+
+* Matteo Padovan, Giulio Foletto, Lorenzo Coccia, **Marco Avesani**, Paolo Villoresi, Giuseppe Vallone - *"Secure and robust randomness with sequential quantum measurements"* - npj Quantum Information (2023) \\
+[ArXiv](https://arxiv.org/abs/2309.12286){: .btn .btn--info}  [Journal](https://doi.org/10.1038/s41534-024-00879-w){: .btn .btn--info}
 
 * Federico Berra, Costantino Agnesi, Andrea Stanco, **Marco Avesani**, Michal Kuklewski, Daniel Matter, Paolo Villoresi, Giuseppe Vallone - *"Synchronization of quantum communication over an optical classical communication channel"* - Applied Optics (2023) \\
 [ArXiv](https://arxiv.org/abs/2306.17603){: .btn .btn--info}  [Journal](https://doi.org/10.1364/AO.500416){: .btn .btn--info}
