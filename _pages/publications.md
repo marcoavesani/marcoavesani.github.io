@@ -11,7 +11,7 @@ author_profile: true
 
 {%include base_path %}
 
-*Last updated: December 26, 2025*
+*Last updated: December 27, 2025*
 
 ## Preprints
 
