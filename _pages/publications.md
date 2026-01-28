@@ -11,26 +11,26 @@ author_profile: true
 
 {%include base_path %}
 
-*Last updated: January 27, 2026*
+*Last updated: January 28, 2026*
 
 ## Preprints
 
-* Lorenzo Coccia, Matteo Padovan, Andrea Pompermaier, Mattia Sabatini, **Marco Avesani**, Davide G Marangon, Paolo Villoresi, Giuseppe Vallone - *"Quantum bounds and device-independent security with rank-one qubit measurements"* - npj Quantum Information (2026) \\
-[ArXiv](https://arxiv.org/abs/2503.13282){: .btn .btn--info}  [Paper](https://www.nature.com/articles/s41534-025-01175-x){: .btn .btn--info}
-
-* Gianluca Teza, Francesco Campaioli, **Marco Avesani**, Oren Raz - *"Finite-temperature criticality through quantum annealing"* - arXiv preprint arXiv:2507.07167 (2025) \\
+* Gianluca Teza, Francesco Campaioli, **Marco Avesani**, Oren Raz - *"Finite-temperature criticality through quantum annealing"* - arXiv (2025) \\
 [ArXiv](https://arxiv.org/abs/2507.07167){: .btn .btn--info}
 
-* Federico Berra, Matías Rubén Bolaños, Alberto De Toni, Kannan Vijayadharan, Costantino Agnesi, **Marco Avesani**, Andrea Stanco, Paolo Villoresi, Giuseppe Vallone - *"General model and modulation strategies for Sagnac-based encoders"* - arXiv preprint arXiv:2510.11873 (2025) \\
+* Federico Berra, Matías Rubén Bolaños, Alberto De Toni, Kannan Vijayadharan, Costantino Agnesi, **Marco Avesani**, Andrea Stanco, Paolo Villoresi, Giuseppe Vallone - *"General model and modulation strategies for Sagnac-based encoders"* - arXiv (2025) \\
 [ArXiv](https://arxiv.org/abs/2510.11873){: .btn .btn--info}
 
-* Andrea Peri, Giulio Gualandi, Tommaso Bertapelle, Mattia Sabatini, Giacomo Corrielli, Yoann Piétri, Davide Giacomo Marangon, Giuseppe Vallone, Paolo Villoresi, Roberto Osellame, **Marco Avesani** - *"High-Performance Heterodyne Receiver for Quantum Information Processing in a Laser Written Integrated Photonic Platform"* - arXiv preprint arXiv:2506.08924 (2025) \\
+* Andrea Peri, Giulio Gualandi, Tommaso Bertapelle, Mattia Sabatini, Giacomo Corrielli, Yoann Piétri, Davide Giacomo Marangon, Giuseppe Vallone, Paolo Villoresi, Roberto Osellame, **Marco Avesani** - *"High-Performance Heterodyne Receiver for Quantum Information Processing in a Laser Written Integrated Photonic Platform"* - arXiv (2025) \\
 [ArXiv](https://arxiv.org/abs/2506.08924){: .btn .btn--info}
 
-* Alberto De Toni, Edoardo Bortolozzo, Alessandro Emanuele, Marco Venturini, Luca Calderaro, **Marco Avesani**, Giuseppe Vallone, Paolo Villoresi - *"Long-term analysis of efficient-BB84 4-node network with optical switches in metropolitan environment"* - arXiv preprint arXiv:2510.16867 (2025) \\
+* Alberto De Toni, Edoardo Bortolozzo, Alessandro Emanuele, Marco Venturini, Luca Calderaro, **Marco Avesani**, Giuseppe Vallone, Paolo Villoresi - *"Long-term analysis of efficient-BB84 4-node network with optical switches in metropolitan environment"* - arXiv (2025) \\
 [ArXiv](https://arxiv.org/abs/2510.16867){: .btn .btn--info}
 
-* Davide Scalcon, Matteo Padovan, Paolo Villoresi, Giuseppe Vallone, **Marco Avesani** - *"Versatile Wavelength-Division Multiplexed Quantum Key Distribution Network Operating Simultaneously in the O and C Bands"* - arXiv preprint arXiv:2507.11175 (2025) \\
+* Lorenzo Coccia, Matteo Padovan, Andrea Pompermaier, Mattia Sabatini, **Marco Avesani**, Davide Giacomo Marangon, Paolo Villoresi, Giuseppe Vallone - *"Quantum bounds and device-independent security with rank-one qubit measurements"* - arXiv (2025) \\
+[ArXiv](https://arxiv.org/abs/2503.13282){: .btn .btn--info}
+
+* Davide Scalcon, Matteo Padovan, Paolo Villoresi, Giuseppe Vallone, **Marco Avesani** - *"Versatile Wavelength-Division Multiplexed Quantum Key Distribution Network Operating Simultaneously in the O and C Bands"* - arXiv (2025) \\
 [ArXiv](https://arxiv.org/abs/2507.11175){: .btn .btn--info}
 
 ## Peer-reviewed Journals
