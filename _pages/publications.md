@@ -11,9 +11,12 @@ author_profile: true
 
 {%include base_path %}
 
-*Last updated: February 09, 2026*
+*Last updated: February 10, 2026*
 
 ## Preprints
+
+* Matías Rubén Bolaños, Edoardo Rossi, Federico Berra, Alberto De Toni, Ilektra Karakosta-Amarantidou, Daniel Christian Lawo, Costantino Agnesi, **Marco Avesani**, Andrea Stanco, Francesco Vedovato, Paolo Villoresi, Giuseppe Vallone - *"GHz-rate polarization-based QKD system for fiber and satellite applications"* - arXiv (2026) \\
+[ArXiv](https://arxiv.org/abs/2602.08908){: .btn .btn--info}
 
 * Gianluca Teza, Francesco Campaioli, **Marco Avesani**, Oren Raz - *"Finite-temperature criticality through quantum annealing"* - arXiv (2025) \\
 [ArXiv](https://arxiv.org/abs/2507.07167){: .btn .btn--info}
