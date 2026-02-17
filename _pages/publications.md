@@ -11,26 +11,23 @@ author_profile: true
 
 {%include base_path %}
 
-*Last updated: February 16, 2026*
+*Last updated: February 17, 2026*
 
 ## Preprints
 
-* Matías Rubén Bolaños, Edoardo Rossi, Federico Berra, Alberto De Toni, Ilektra Karakosta-Amarantidou, Daniel Christian Lawo, Costantino Agnesi, **Marco Avesani**, Andrea Stanco, Francesco Vedovato, Paolo Villoresi, Giuseppe Vallone - *"GHz-rate polarization-based QKD system for fiber and satellite applications"* - arXiv (2026) \\
+* Matías Rubén Bolaños, Edoardo Rossi, Federico Berra, Alberto De Toni, Ilektra Karakosta-Amarantidou, Daniel Christian Lawo, Costantino Agnesi, **Marco Avesani**, Andrea Stanco, Francesco Vedovato, Paolo Villoresi, Giuseppe Vallone - *"GHz-rate polarization-based QKD system for fiber and satellite applications"* - arXiv preprint arXiv:2602.08908 (2026) \\
 [ArXiv](https://arxiv.org/abs/2602.08908){: .btn .btn--info}
 
-* Gianluca Teza, Francesco Campaioli, **Marco Avesani**, Oren Raz - *"Finite-temperature criticality through quantum annealing"* - arXiv (2025) \\
+* Gianluca Teza, Francesco Campaioli, **Marco Avesani**, Oren Raz - *"Finite-temperature criticality through quantum annealing"* - arXiv preprint arXiv:2507.07167 (2025) \\
 [ArXiv](https://arxiv.org/abs/2507.07167){: .btn .btn--info}
 
-* Federico Berra, Matías Rubén Bolaños, Alberto De Toni, Kannan Vijayadharan, Costantino Agnesi, **Marco Avesani**, Andrea Stanco, Paolo Villoresi, Giuseppe Vallone - *"General model and modulation strategies for Sagnac-based encoders"* - arXiv (2025) \\
+* Federico Berra, Matías Rubén Bolaños, Alberto De Toni, Kannan Vijayadharan, Costantino Agnesi, **Marco Avesani**, Andrea Stanco, Paolo Villoresi, Giuseppe Vallone - *"General model and modulation strategies for Sagnac-based encoders"* - arXiv preprint arXiv:2510.11873 (2025) \\
 [ArXiv](https://arxiv.org/abs/2510.11873){: .btn .btn--info}
 
-* Alberto De Toni, Edoardo Bortolozzo, Alessandro Emanuele, Marco Venturini, Luca Calderaro, **Marco Avesani**, Giuseppe Vallone, Paolo Villoresi - *"Long-term analysis of efficient-BB84 4-node network with optical switches in metropolitan environment"* - arXiv (2025) \\
+* Alberto De Toni, Edoardo Bortolozzo, Alessandro Emanuele, Marco Venturini, Luca Calderaro, **Marco Avesani**, Giuseppe Vallone, Paolo Villoresi - *"Long-term analysis of efficient-BB84 4-node network with optical switches in metropolitan environment"* - arXiv preprint arXiv:2510.16867 (2025) \\
 [ArXiv](https://arxiv.org/abs/2510.16867){: .btn .btn--info}
 
-* Lorenzo Coccia, Matteo Padovan, Andrea Pompermaier, Mattia Sabatini, **Marco Avesani**, Davide Giacomo Marangon, Paolo Villoresi, Giuseppe Vallone - *"Quantum bounds and device-independent security with rank-one qubit measurements"* - arXiv (2025) \\
-[ArXiv](https://arxiv.org/abs/2503.13282){: .btn .btn--info}
-
-* Davide Scalcon, Matteo Padovan, Paolo Villoresi, Giuseppe Vallone, **Marco Avesani** - *"Versatile Wavelength-Division Multiplexed Quantum Key Distribution Network Operating Simultaneously in the O and C Bands"* - arXiv (2025) \\
+* Davide Scalcon, Matteo Padovan, Paolo Villoresi, Giuseppe Vallone, **Marco Avesani** - *"Versatile Wavelength-Division Multiplexed Quantum Key Distribution Network Operating Simultaneously in the O and C Bands"* - arXiv preprint arXiv:2507.11175 (2025) \\
 [ArXiv](https://arxiv.org/abs/2507.11175){: .btn .btn--info}
 
 ## Peer-reviewed Journals
@@ -43,6 +40,9 @@ author_profile: true
 
 * Beatriz Lopes da Costa, Matías R. Bolaños, Ricardo Chaves, Claudio Narduzzi, **Marco Avesani**, Davide Giacomo Marangon, Andrea Stanco, Giuseppe Vallone, Paolo Villoresi, Yasser Omar - *"Power-consumption Backdoor in Quantum Key Distribution"* - Physical Review Applied (2025) \\
 [ArXiv](https://arxiv.org/abs/2503.11767){: .btn .btn--info}  [Journal](https://doi.org/10.1103/f92x-c3zj){: .btn .btn--info}
+
+* Lorenzo Coccia, Matteo Padovan, Andrea Pompermaier, Mattia Sabatini, **Marco Avesani**, Davide Giacomo Marangon, Paolo Villoresi, Giuseppe Vallone - *"Quantum bounds and device-independent security with rank-one qubit measurements"* - npj Quantum Inf (2025) \\
+[ArXiv](https://arxiv.org/abs/2503.13282){: .btn .btn--info}  [Journal](https://doi.org/10.1038/s41534-025-01175-x){: .btn .btn--info}
 
 * Mattia Sabatini, Tommaso Bertapelle, Paolo Villoresi, Giuseppe Vallone, **Marco Avesani** - *"Hybrid encoder for discrete and continuous variable QKD"* - Adv Quantum Technol. 2025, 2400522 (2024) \\
 [ArXiv](https://arxiv.org/abs/2408.17412){: .btn .btn--info}  [Journal](https://doi.org/10.1002/qute.202400522){: .btn .btn--info}
