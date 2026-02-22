@@ -11,26 +11,26 @@ author_profile: true
 
 {%include base_path %}
 
-*Last updated: February 19, 2026*
+*Last updated: February 22, 2026*
 
 ## Preprints
 
-* Matías Rubén Bolaños, Edoardo Rossi, Federico Berra, Alberto De Toni, Ilektra Karakosta-Amarantidou, Daniel Christian Lawo, Costantino Agnesi, **Marco Avesani**, Andrea Stanco, Francesco Vedovato, Paolo Villoresi, Giuseppe Vallone - *"GHz-rate polarization-based QKD system for fiber and satellite applications"* - arXiv preprint arXiv:2602.08908 (2026) \\
+* Matías Rubén Bolaños, Edoardo Rossi, Federico Berra, Alberto De Toni, Ilektra Karakosta-Amarantidou, Daniel Christian Lawo, Costantino Agnesi, **Marco Avesani**, Andrea Stanco, Francesco Vedovato, Paolo Villoresi, Giuseppe Vallone - *"GHz-rate polarization-based QKD system for fiber and satellite applications"* - arXiv (2026) \\
 [ArXiv](https://arxiv.org/abs/2602.08908){: .btn .btn--info}
 
 * Edoardo Rossi, Ilektra Karakosta-Amarantidou, Matteo Padovan, Marco Nardi, **Marco Avesani**, Francesco Bruno Leonardo Santagiustina, Marco Taffarello, Antonio Vanzo, Stefano Bonora, Giuseppe Vallone, Paolo Villoresi, Francesco Vedovato - *"Intermodal quantum key distribution over an 18 km free-space channel with adaptive optics and room-temperature detectors"* - arXiv (2026) \\
 [ArXiv](https://arxiv.org/abs/2602.16680){: .btn .btn--info}
 
-* Gianluca Teza, Francesco Campaioli, **Marco Avesani**, Oren Raz - *"Finite-temperature criticality through quantum annealing"* - arXiv preprint arXiv:2507.07167 (2025) \\
+* Gianluca Teza, Francesco Campaioli, **Marco Avesani**, Oren Raz - *"Finite-temperature criticality through quantum annealing"* - arXiv (2025) \\
 [ArXiv](https://arxiv.org/abs/2507.07167){: .btn .btn--info}
 
-* Federico Berra, Matías Rubén Bolaños, Alberto De Toni, Kannan Vijayadharan, Costantino Agnesi, **Marco Avesani**, Andrea Stanco, Paolo Villoresi, Giuseppe Vallone - *"General model and modulation strategies for Sagnac-based encoders"* - arXiv preprint arXiv:2510.11873 (2025) \\
+* Federico Berra, Matías Rubén Bolaños, Alberto De Toni, Kannan Vijayadharan, Costantino Agnesi, **Marco Avesani**, Andrea Stanco, Paolo Villoresi, Giuseppe Vallone - *"General model and modulation strategies for Sagnac-based encoders"* - arXiv (2025) \\
 [ArXiv](https://arxiv.org/abs/2510.11873){: .btn .btn--info}
 
-* Alberto De Toni, Edoardo Bortolozzo, Alessandro Emanuele, Marco Venturini, Luca Calderaro, **Marco Avesani**, Giuseppe Vallone, Paolo Villoresi - *"Long-term analysis of efficient-BB84 4-node network with optical switches in metropolitan environment"* - arXiv preprint arXiv:2510.16867 (2025) \\
+* Alberto De Toni, Edoardo Bortolozzo, Alessandro Emanuele, Marco Venturini, Luca Calderaro, **Marco Avesani**, Giuseppe Vallone, Paolo Villoresi - *"Long-term analysis of efficient-BB84 4-node network with optical switches in metropolitan environment"* - arXiv (2025) \\
 [ArXiv](https://arxiv.org/abs/2510.16867){: .btn .btn--info}
 
-* Davide Scalcon, Matteo Padovan, Paolo Villoresi, Giuseppe Vallone, **Marco Avesani** - *"Versatile Wavelength-Division Multiplexed Quantum Key Distribution Network Operating Simultaneously in the O and C Bands"* - arXiv preprint arXiv:2507.11175 (2025) \\
+* Davide Scalcon, Matteo Padovan, Paolo Villoresi, Giuseppe Vallone, **Marco Avesani** - *"Versatile Wavelength-Division Multiplexed Quantum Key Distribution Network Operating Simultaneously in the O and C Bands"* - arXiv (2025) \\
 [ArXiv](https://arxiv.org/abs/2507.11175){: .btn .btn--info}
 
 ## Peer-reviewed Journals
