@@ -5,7 +5,7 @@ permalink: /publication/stanco_2021_versatile_and_concurrent
 excerpt: 'This work presents a hardware and software architecture which can be used in those systems that implement practical Quantum Key Distribution (QKD) and Quantum Random Number Generation (QRNG) schemes. ...' if len(self.abstract) > 200 else self.abstract
 date: 2021-01-01
 venue: 'IEEE Transactions on Quantum Engineering, vol. 3, pp. 1-8, 2022, Art no. 6000108'
-paperurl: 'https://arxiv.org/abs/2107.01857'
+paperurl: 'https://doi.org/10.1109/TQE.2022.3143997'
 citation: 'Andrea Stanco, Francesco B. L. Santagiustina, Luca Calderaro, Marco Avesani, Tommaso Bertapelle, ..., "Versatile and concurrent FPGA-based architecture for practical quantum communication systems", IEEE Transactions on Quantum Engineering, vol. 3, pp. 1-8, 2022, Art no. 6000108, (2021).'
 ---
 
@@ -14,4 +14,4 @@ This work presents a hardware and software architecture which can be used in tho
 **Authors:** Andrea Stanco, Francesco B. L. Santagiustina, Luca Calderaro, **Marco Avesani**, Tommaso Bertapelle, Daniele Dequal, Giuseppe Vallone, Paolo Villoresi
 
 
-[ArXiv](https://arxiv.org/abs/2107.01857){: .btn .btn--info}
+[Journal](https://doi.org/10.1109/TQE.2022.3143997){: .btn .btn--info} [ArXiv](https://arxiv.org/abs/2107.01857){: .btn .btn--info}

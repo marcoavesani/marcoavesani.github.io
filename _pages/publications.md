@@ -11,7 +11,7 @@ author_profile: true
 
 {%include base_path %}
 
-*Last updated: March 05, 2026*
+*Last updated: March 06, 2026*
 
 ## Preprints
 
@@ -38,9 +38,6 @@ author_profile: true
 
 * Hamid Tebyanian, Mujtaba Zahidy, **Marco Avesani**, Andrea Stanco, Paolo Villoresi, Giuseppe Vallone - *"Practical Semi-Device Independent Randomness Generation Based on Quantum State's Indistinguishability"* - Quantum Sci. Technol. 6, 045026 (2021) (2021) \\
 [ArXiv](https://arxiv.org/abs/2104.11137){: .btn .btn--info}
-
-* Andrea Stanco, Francesco B. L. Santagiustina, Luca Calderaro, **Marco Avesani**, Tommaso Bertapelle, Daniele Dequal, Giuseppe Vallone, Paolo Villoresi - *"Versatile and concurrent FPGA-based architecture for practical quantum communication systems"* - IEEE Transactions on Quantum Engineering, vol. 3, pp. 1-8, 2022, Art no. 6000108 (2021) \\
-[ArXiv](https://arxiv.org/abs/2107.01857){: .btn .btn--info}
 
 * **Marco Avesani**, Luca Calderaro, Giulio Foletto, Costantino Agnesi, Francesco Picciariello, Francesco Santagiustina, Alessia Scriminich, Andrea Stanco, Francesco Vedovato, Mujtaba Zahidy, Giuseppe Vallone, Paolo Villoresi - *"Resource-effective Quantum Key Distribution: a field-trial in Padua city center"* - Optics Letters 46, 2848 (2021) (2020) \\
 [ArXiv](https://arxiv.org/abs/2012.08457){: .btn .btn--info}
@@ -118,4 +115,7 @@ author_profile: true
 
 * **Marco Avesani**, Giulio Foletto, Matteo Padovan, Luca Calderaro, Costantino Agnesi, Elisa Bazzani, Federico Berra, Tommaso Bertapelle, Francesco Picciariello, Francesco B. L. Santagiustina, Davide Scalcon, Alessia Scriminich, Andrea Stanco, Francesco Vedovato, Giuseppe Vallone, Paolo Villoresi - *"Deployment-ready quantum key distribution over a classical network infrastructure in Padua"* - Journal of Lightwave Technology 40 (6), 1658 - 1663 (2021) \\
 [ArXiv](https://arxiv.org/abs/2109.13558){: .btn .btn--info}  [Journal](https://doi.org/10.1109/JLT.2021.3130447){: .btn .btn--info}
+
+* Andrea Stanco, Francesco B. L. Santagiustina, Luca Calderaro, **Marco Avesani**, Tommaso Bertapelle, Daniele Dequal, Giuseppe Vallone, Paolo Villoresi - *"Versatile and concurrent FPGA-based architecture for practical quantum communication systems"* - IEEE Transactions on Quantum Engineering, vol. 3, pp. 1-8, 2022, Art no. 6000108 (2021) \\
+[ArXiv](https://arxiv.org/abs/2107.01857){: .btn .btn--info}  [Journal](https://doi.org/10.1109/TQE.2022.3143997){: .btn .btn--info}
 
