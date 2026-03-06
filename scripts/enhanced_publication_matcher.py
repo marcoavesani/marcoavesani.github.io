@@ -15,6 +15,14 @@ class EnhancedPublicationMatcher:
     
     def __init__(self):
         self.normalizer = PublicationNormalizer()
+    
+    @staticmethod
+    def _is_arxiv_url(url: str) -> bool:
+        """Return True when URL points to arXiv."""
+        if not url:
+            return False
+        lower = url.lower()
+        return "arxiv.org/abs/" in lower or "arxiv.org/pdf/" in lower
         
     def enrich_arxiv_publications(self, arxiv_pubs: List[Publication], 
                                 orcid_pubs: List[Publication], 
@@ -69,8 +77,15 @@ class EnhancedPublicationMatcher:
             enhanced_pub.type = "journal"
             enhanced_pub.venue = enhanced_pub.journal
             
-        # Step 2: If no journal info yet, search for matches in other sources
-        if not enhanced_pub.journal or enhanced_pub.type == "preprint":
+        # Step 2: Try enrichment from ORCID/Scholar whenever key journal
+        # metadata is still incomplete (especially DOI/journal URL).
+        needs_external_enrichment = (
+            not enhanced_pub.journal
+            or enhanced_pub.type == "preprint"
+            or not enhanced_pub.doi
+            or self._is_arxiv_url(enhanced_pub.url)
+        )
+        if needs_external_enrichment:
             match = self._find_matching_publication(arxiv_pub, other_pubs)
             if match:
                 logger.info(f"Found journal match for arXiv paper: '{arxiv_pub.title[:50]}...'")
@@ -228,21 +243,31 @@ class EnhancedPublicationMatcher:
     def _merge_publication_data(self, arxiv_pub: Publication, journal_pub: Publication) -> Publication:
         """Merge arXiv publication with journal publication data"""
         
+        merged_doi = journal_pub.doi or arxiv_pub.doi
+        merged_journal = journal_pub.journal or arxiv_pub.journal
+        merged_url = ""
+        if merged_doi:
+            merged_url = f"https://doi.org/{merged_doi}"
+        elif journal_pub.url:
+            merged_url = journal_pub.url
+        else:
+            merged_url = arxiv_pub.url
+        
         # Start with arXiv data and enhance with journal data
         merged = Publication(
             title=arxiv_pub.title,  # Keep arXiv title (often cleaner)
             authors=journal_pub.authors or arxiv_pub.authors,  # Prefer journal authors (more complete)
-            journal=journal_pub.journal,  # Use journal information
+            journal=merged_journal,
             year=journal_pub.year or arxiv_pub.year,  # Prefer journal year
-            volume=journal_pub.volume,
-            pages=journal_pub.pages,
-            doi=journal_pub.doi,
+            volume=journal_pub.volume or arxiv_pub.volume,
+            pages=journal_pub.pages or arxiv_pub.pages,
+            doi=merged_doi,
             arxiv_id=arxiv_pub.arxiv_id,  # Keep arXiv ID
-            url=journal_pub.url or arxiv_pub.url,  # Prefer journal URL
+            url=merged_url,
             pdf_url=arxiv_pub.pdf_url,  # Keep arXiv PDF
             abstract=arxiv_pub.abstract or journal_pub.abstract,  # Prefer arXiv abstract
             type="journal",  # It's now a journal publication
-            venue=journal_pub.journal or journal_pub.venue
+            venue=merged_journal or journal_pub.venue or arxiv_pub.venue
         )
         
         return merged

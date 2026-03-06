@@ -69,6 +69,8 @@ This system automatically fetches and updates your academic publications from mu
    ```bash
    pip install -r requirements.txt
    ```
+   The requirements file installs the Google Scholar dependency from
+   `Gil-Frenkel/scholarly` for better compatibility.
 
 3. **Configure your settings:**
    Edit `config.yml` with your academic information:

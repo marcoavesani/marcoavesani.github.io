@@ -12,7 +12,7 @@ try:
     from scholarly import scholarly
     SCHOLARLY_AVAILABLE = True
 except ImportError:
-    logger.warning("scholarly package not installed. Install with: pip install scholarly")
+    logger.warning("scholarly package not installed. Install with: pip install git+https://github.com/Gil-Frenkel/scholarly.git")
     SCHOLARLY_AVAILABLE = False
 
 class GoogleScholarFetcher:
@@ -24,7 +24,7 @@ class GoogleScholarFetcher:
     def fetch_publications(self, scholar_id: str = None, author_name: str = None) -> List[Publication]:
         """Fetch publications from Google Scholar"""
         if not SCHOLARLY_AVAILABLE:
-            logger.error("scholarly package not available. Please install with: pip install scholarly")
+            logger.error("scholarly package not available. Please install with: pip install git+https://github.com/Gil-Frenkel/scholarly.git")
             return []
         
         publications = []

@@ -159,6 +159,77 @@ def test_peer_reviewed_classification_without_doi():
         print(f"❌ Peer-reviewed classification test failed: {e}")
         return False
 
+def test_enrichment_adds_doi_even_with_journal_ref():
+    """Ensure external matching still runs when arXiv already has journal reference."""
+    try:
+        from publication_utils import Publication
+        from enhanced_publication_matcher import EnhancedPublicationMatcher
+        
+        matcher = EnhancedPublicationMatcher()
+        
+        arxiv_pub = Publication(
+            title="Deployment-ready quantum key distribution over a classical network infrastructure in Padua",
+            authors=["Marco Avesani", "Giulio Foletto"],
+            journal="Journal of Lightwave Technology 40 (6), 1658 - 1663 (2022)",
+            year=2021,
+            arxiv_id="",  # Avoid network call in unit test
+            url="https://arxiv.org/abs/2109.13558",
+            type="journal",
+            venue="Journal of Lightwave Technology 40 (6), 1658 - 1663 (2022)"
+        )
+        
+        orcid_match = Publication(
+            title="Deployment-ready quantum key distribution over a classical network infrastructure in Padua",
+            authors=["Marco Avesani", "Giulio Foletto"],
+            journal="Journal of Lightwave Technology",
+            year=2022,
+            doi="10.1109/JLT.2021.3130447",
+            url="https://doi.org/10.1109/JLT.2021.3130447",
+            type="journal",
+            venue="Journal of Lightwave Technology"
+        )
+        
+        enriched = matcher._enrich_single_publication(arxiv_pub, [orcid_match])
+        
+        assert enriched.doi == "10.1109/JLT.2021.3130447"
+        assert enriched.url == "https://doi.org/10.1109/JLT.2021.3130447"
+        assert enriched.type == "journal"
+        
+        print("✅ Enrichment DOI backfill test passed")
+        return True
+        
+    except Exception as e:
+        print(f"❌ Enrichment DOI backfill test failed: {e}")
+        return False
+
+def test_preprint_with_arxiv_does_not_get_generic_paper_link():
+    """Preprints with arXiv IDs should not show a generic Paper link."""
+    try:
+        from publication_utils import Publication
+        from fetch_publications import JekyllPublicationGenerator
+        
+        preprint = Publication(
+            title="Example preprint",
+            authors=["Marco Avesani"],
+            year=2026,
+            arxiv_id="2602.08908",
+            url="https://ui.adsabs.harvard.edu/abs/2026arXiv260208908R/abstract",
+            type="preprint",
+            venue="arXiv e-prints"
+        )
+        
+        generator = JekyllPublicationGenerator(".", {'author_name': 'Marco Avesani'})
+        entry = generator._format_publication_entry(preprint)
+        assert "[ArXiv]" in entry
+        assert "[Paper]" not in entry
+        
+        print("✅ Preprint link rendering test passed")
+        return True
+        
+    except Exception as e:
+        print(f"❌ Preprint link rendering test failed: {e}")
+        return False
+
 def test_config_loading():
     """Test configuration loading"""
     try:
@@ -242,6 +313,8 @@ def main():
         ("ArXiv fetcher", test_arxiv_fetcher),
         ("Deduplication", test_publication_deduplication),
         ("Peer-reviewed classification", test_peer_reviewed_classification_without_doi),
+        ("Enrichment DOI backfill", test_enrichment_adds_doi_even_with_journal_ref),
+        ("Preprint link rendering", test_preprint_with_arxiv_does_not_get_generic_paper_link),
         ("Configuration loading", test_config_loading),
         ("File generation", test_file_generation),
     ]

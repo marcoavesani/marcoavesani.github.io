@@ -53,12 +53,15 @@ class Publication:
     
     def generate_markdown_content(self, highlight_author: str = "M. Avesani") -> str:
         """Generate markdown content for Jekyll"""
-        # Determine the primary paper URL (prioritize DOI for journals, arXiv for preprints)
+        # Determine the primary paper URL (prefer publisher link for journals).
+        arxiv_abs_url = f"https://arxiv.org/abs/{self.arxiv_id}" if self.arxiv_id else ""
         paper_url = ""
         if self.doi:
             paper_url = f"https://doi.org/{self.doi}"
+        elif self.type.lower() == 'journal' and self.url and self.url != arxiv_abs_url:
+            paper_url = self.url
         elif self.arxiv_id:
-            paper_url = f"https://arxiv.org/abs/{self.arxiv_id}"
+            paper_url = arxiv_abs_url
         elif self.url:
             paper_url = self.url
             

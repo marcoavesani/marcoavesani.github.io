@@ -338,6 +338,14 @@ class JekyllPublicationGenerator:
         self.publications_dir = os.path.join(site_root, '_publications')
         self.pages_dir = os.path.join(site_root, '_pages')
     
+    @staticmethod
+    def _is_arxiv_url(url: str) -> bool:
+        """Return True when URL points to arXiv."""
+        if not url:
+            return False
+        lower = url.lower()
+        return "arxiv.org/abs/" in lower or "arxiv.org/pdf/" in lower
+    
     def generate_publication_files(self, publications: List[Publication]):
         """Generate individual markdown files for each publication"""
         # Filter publications based on configuration
@@ -514,13 +522,13 @@ author_profile: true
             journal_url = None
             if pub.doi:
                 journal_url = f"https://doi.org/{pub.doi}"
-            elif pub.url and pub.url != f"https://arxiv.org/abs/{pub.arxiv_id}":
+            elif pub.url and not self._is_arxiv_url(pub.url):
                 journal_url = pub.url
                 
             if journal_url:
                 links.append(f"[Journal]({journal_url}){{: .btn .btn--info}}")
-        elif pub.url and pub.url != f"https://arxiv.org/abs/{pub.arxiv_id}":
-            # For non-journal papers, show regular URL
+        elif pub.url and not pub.arxiv_id:
+            # For non-journal papers without an arXiv id, show a generic paper URL.
             links.append(f"[Paper]({pub.url}){{: .btn .btn--info}}")
         
         # Add PDF link if available and different from arXiv PDF
