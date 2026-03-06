@@ -121,6 +121,44 @@ def test_publication_deduplication():
         print(f"❌ Deduplication test failed: {e}")
         return False
 
+def test_peer_reviewed_classification_without_doi():
+    """Regression test: journal references without DOI should still be journal papers"""
+    try:
+        from publication_utils import Publication
+        from fetch_publications import PublicationAggregator
+        
+        published_no_doi = Publication(
+            title="Experimental Test of Sequential Weak Measurements for Certified Quantum Randomness Extraction",
+            authors=["Giulio Foletto", "Marco Avesani"],
+            journal="Phys. Rev. A 103, 062206 (2021)",
+            year=2021,
+            arxiv_id="2101.12074",
+            doi="",
+            type="preprint",
+            venue="Phys. Rev. A 103, 062206 (2021)"
+        )
+        
+        pure_preprint = Publication(
+            title="Generic arXiv-only manuscript",
+            authors=["Marco Avesani"],
+            journal="",
+            year=2026,
+            arxiv_id="2602.08908",
+            doi="",
+            type="preprint",
+            venue="arXiv"
+        )
+        
+        assert PublicationAggregator._is_peer_reviewed(published_no_doi) is True
+        assert PublicationAggregator._is_peer_reviewed(pure_preprint) is False
+        
+        print("✅ Peer-reviewed classification test passed")
+        return True
+        
+    except Exception as e:
+        print(f"❌ Peer-reviewed classification test failed: {e}")
+        return False
+
 def test_config_loading():
     """Test configuration loading"""
     try:
@@ -203,6 +241,7 @@ def main():
         ("Publication objects", test_publication_creation),
         ("ArXiv fetcher", test_arxiv_fetcher),
         ("Deduplication", test_publication_deduplication),
+        ("Peer-reviewed classification", test_peer_reviewed_classification_without_doi),
         ("Configuration loading", test_config_loading),
         ("File generation", test_file_generation),
     ]

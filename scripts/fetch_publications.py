@@ -58,6 +58,26 @@ class PublicationAggregator:
         self.enhanced_matcher = EnhancedPublicationMatcher()
         self.google_scholar_fetcher = GoogleScholarFetcher()
     
+    @staticmethod
+    def _is_peer_reviewed(pub: Publication) -> bool:
+        """
+        Determine whether a publication should be treated as peer-reviewed.
+
+        A DOI is useful but not mandatory: many arXiv records expose a journal
+        reference even when DOI metadata is missing.
+        """
+        journal_or_venue = (pub.journal or pub.venue or "").strip()
+        if not journal_or_venue:
+            return False
+        
+        lower_text = journal_or_venue.lower()
+        preprint_markers = [
+            'arxiv', 'preprint', 'e-print', 'working paper',
+            'submitted', 'under review'
+        ]
+        
+        return not any(marker in lower_text for marker in preprint_markers)
+    
     def fetch_all_publications(self, sources: List[str] = None) -> List[Publication]:
         """Fetch publications from all specified sources"""
         if sources is None:
@@ -238,20 +258,12 @@ class PublicationAggregator:
         preprint_count = 0
         journal_count = 0
         for pub in enhanced_pubs:
-            # Check if it has meaningful journal information (not just arXiv)
-            has_real_journal = (pub.journal and pub.journal.strip() and 
-                               not any(keyword in pub.journal.lower() 
-                                     for keyword in ['arxiv', 'preprint', 'e-print']))
-            has_doi = pub.doi and pub.doi.strip()
-            
-            # More specific check: if the title or journal contains "preprint", it's likely a preprint
-            is_preprint_pattern = (pub.journal and 
-                                 any(keyword in pub.journal.lower() 
-                                   for keyword in ['preprint', 'e-print']))
-            
-            if has_real_journal and has_doi and not is_preprint_pattern:
-                # Has real journal information and DOI - it's a peer-reviewed paper
+            if self._is_peer_reviewed(pub):
+                # A real journal/venue reference is enough to consider this peer-reviewed.
                 pub.type = "journal"
+                # Prefer the resolved journal text over an arXiv venue label.
+                if (not pub.venue or 'arxiv' in (pub.venue or '').lower()) and pub.journal:
+                    pub.venue = pub.journal
                 journal_count += 1
                 logger.debug(f"Classified as journal: '{pub.title[:50]}...' (journal: '{pub.journal}', doi: '{pub.doi}')")
             else:
