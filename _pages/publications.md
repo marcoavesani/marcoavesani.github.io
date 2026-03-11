@@ -11,7 +11,7 @@ author_profile: true
 
 {%include base_path %}
 
-*Last updated: March 10, 2026*
+*Last updated: March 11, 2026*
 
 ## Preprints
 
@@ -75,7 +75,7 @@ author_profile: true
 [ArXiv](https://arxiv.org/abs/2111.13383){: .btn .btn--info}  [Journal](https://doi.org/10.1002/qute.202200051){: .btn .btn--info}
 
 * **Marco Avesani**, Giulio Foletto, Matteo Padovan, Luca Calderaro, Costantino Agnesi, Elisa Bazzani, Federico Berra, Tommaso Bertapelle, Francesco Picciariello, Francesco BL Santagiustina, Davide Scalcon, Alessia Scriminich, Andrea Stanco, Francesco Vedovato, Giuseppe Vallone, Paolo Villoresi - *"Deployment-ready quantum key distribution over a classical network infrastructure in Padua"* - Journal of Lightwave Technology (2022) \\
-[ArXiv](https://arxiv.org/abs/2109.13558){: .btn .btn--info}  [Journal](https://opg.optica.org/abstract.cfm?uri=jlt-40-6-1658){: .btn .btn--info}
+[ArXiv](https://arxiv.org/abs/2109.13558){: .btn .btn--info}  [Journal](https://doi.org/10.1109/JLT.2021.3130447){: .btn .btn--info}
 
 * **Marco Avesani**, Hamid Tebyanian, Paolo Villoresi, Giuseppe Vallone - *"Unbounded randomness from uncharacterized sources"* - Communications Physics (2022) \\
 [ArXiv](https://arxiv.org/abs/2010.05798){: .btn .btn--info}  [Journal](https://doi.org/10.1038/s42005-022-01038-3){: .btn .btn--info}
