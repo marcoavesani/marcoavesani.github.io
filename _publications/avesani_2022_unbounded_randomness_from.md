@@ -6,7 +6,7 @@ excerpt: 'Randomness is a central feature of quantum mechanics and an invaluable
 date: 2022-01-01
 venue: 'Communications Physics'
 paperurl: 'https://doi.org/10.1038/s42005-022-01038-3'
-citation: 'Marco Avesani, Hamid Tebyanian, Paolo Villoresi, Giuseppe Vallone, "Unbounded randomness from uncharacterized sources", Communications Physics, vol. 5, pp. 273, (2022).'
+citation: 'Marco Avesani, Hamid Tebyanian, Paolo Villoresi, Giuseppe Vallone, "Unbounded randomness from uncharacterized sources", Communications Physics, (2022).'
 ---
 
 Randomness is a central feature of quantum mechanics and an invaluable resource for both classical and quantum technologies. Commonly, in Device-Independent and Semi-Device-Independent scenarios, randomness is certified using projective measurements and the amount of certified randomness is bounded by the dimension of the measured quantum system. In this work, we propose a new Source-Device-Independent protocol, based on Positive Operator Valued Measurement (POVM), which can arbitrarily increase the number of certified bits for any fixed dimension. A tight lower-bound on the quantum conditional min-entropy is derived using only the POVM structure and the experimental expectation values, taking into account the quantum side-information. For symmetrical POVM measurements on the Bloch sphere we have derived closed-form analytical bounds. Finally, we experimentally demonstrate our method with a compact and simple photonic setup that employs polarization-encoded qubits and POVM up to 6 outcomes.
