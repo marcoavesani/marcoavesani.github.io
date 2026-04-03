@@ -11,7 +11,7 @@ author_profile: true
 
 {%include base_path %}
 
-*Last updated: April 01, 2026*
+*Last updated: April 03, 2026*
 
 ## Preprints
 
@@ -59,11 +59,11 @@ author_profile: true
 * Matteo Padovan, Giulio Foletto, Lorenzo Coccia, **Marco Avesani**, Paolo Villoresi, Giuseppe Vallone - *"Secure and robust randomness with sequential quantum measurements"* - npj Quantum Information (2024) \\
 [ArXiv](https://arxiv.org/abs/2309.12286){: .btn .btn--info}  [Journal](https://doi.org/10.1038/s41534-024-00879-w){: .btn .btn--info}
 
-* Francesco Picciariello, Ilektra Karakosta-Amarantidou, Edoardo Rossi, **Marco Avesani**, Giulio Foletto, Luca Calderaro, Giuseppe Vallone, Paolo Villoresi, Francesco Vedovato - *"Intermodal quantum key distribution field trial with active switching between fiber and free-space channels"* - EPJ Quantum Technol. 12, 6 (2025) (2023) \\
-[ArXiv](https://arxiv.org/abs/2310.17441){: .btn .btn--info}
+* Francesco Picciariello, Ilektra Karakosta-Amarantidou, Edoardo Rossi, **Marco Avesani**, Giulio Foletto, Luca Calderaro, Giuseppe Vallone, Paolo Villoresi, Francesco Vedovato - *"Intermodal quantum key distribution field trial with active switching between fiber and free-space channels"* - EPJ Quantum Technol. (2023) \\
+[ArXiv](https://arxiv.org/abs/2310.17441){: .btn .btn--info}  [Journal](https://doi.org/10.1140/epjqt/s40507-025-00306-9){: .btn .btn--info}
 
-* Francesco Picciariello, Francesco Vedovato, Davide Orsucci, Pablo Nahuel Dominguez, Thomas Zechel, **Marco Avesani**, Matteo Padovan, Giulio Foletto, Luca Calderaro, Daniele Dequal, Amita Shrestha, Ludwig Blumel, Johann Furthner, Giuseppe Vallone, Paolo Villoresi, Tobias D. Schmidt, Florian Moll - *"International time transfer between precise timing facilities secured with a quantum key distribution network"* - GPS solutions 28, 48 (2024) (2023) \\
-[ArXiv](https://arxiv.org/abs/2305.01554){: .btn .btn--info}
+* Francesco Picciariello, Francesco Vedovato, Davide Orsucci, Pablo Nahuel Dominguez, Thomas Zechel, **Marco Avesani**, Matteo Padovan, Giulio Foletto, Luca Calderaro, Daniele Dequal, Amita Shrestha, Ludwig Blumel, Johann Furthner, Giuseppe Vallone, Paolo Villoresi, Tobias D. Schmidt, Florian Moll - *"International time transfer between precise timing facilities secured with a quantum key distribution network"* - GPS solutions (2023) \\
+[ArXiv](https://arxiv.org/abs/2305.01554){: .btn .btn--info}  [Journal](https://doi.org/10.1007/s10291-023-01580-9){: .btn .btn--info}
 
 * Federico Berra, Costantino Agnesi, Andrea Stanco, **Marco Avesani**, Sebastiano Cocchi, Paolo Villoresi, Giuseppe Vallone - *"Modular source for near-infrared quantum communication"* - EPJ Quantum Technology (2023) \\
 [ArXiv](https://arxiv.org/abs/2301.12882){: .btn .btn--info}  [Journal](https://doi.org/10.1140/epjqt/s40507-023-00185-y){: .btn .btn--info}
