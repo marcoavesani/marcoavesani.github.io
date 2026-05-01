@@ -5,7 +5,7 @@ permalink: /publication/peri_2025_highperformance_heterodyne_receiver
 excerpt: 'Continuous-Variable Quantum Key Distribution (CV-QKD) and Quantum Random Number Generation (CV-QRNG) are critical technologies for secure communication and high-speed randomness generation, exploiting...' if len(self.abstract) > 200 else self.abstract
 date: 2025-01-01
 venue: 'Advanced Photonics 8(1), 016009 (4 February 2026)'
-paperurl: 'https://arxiv.org/abs/2506.08924'
+paperurl: 'https://doi.org/10.1117/1.AP.8.1.016009'
 citation: 'Andrea Peri, Giulio Gualandi, Tommaso Bertapelle, Mattia Sabatini, Giacomo Corrielli, Yoann Piétr..., "High-Performance Heterodyne Receiver for Quantum Information Processing in a Laser Written Integrated Photonic Platform", Advanced Photonics 8(1), 016009 (4 February 2026), (2025).'
 ---
 
@@ -14,4 +14,4 @@ Continuous-Variable Quantum Key Distribution (CV-QKD) and Quantum Random Number 
 **Authors:** Andrea Peri, Giulio Gualandi, Tommaso Bertapelle, Mattia Sabatini, Giacomo Corrielli, Yoann Piétri, Davide Giacomo Marangon, Giuseppe Vallone, Paolo Villoresi, Roberto Osellame, **Marco Avesani**
 
 
-[ArXiv](https://arxiv.org/abs/2506.08924){: .btn .btn--info}
+[Journal](https://doi.org/10.1117/1.AP.8.1.016009){: .btn .btn--info} [ArXiv](https://arxiv.org/abs/2506.08924){: .btn .btn--info}
