@@ -6,12 +6,12 @@ excerpt: 'Current technological progress is driving Quantum Key Distribution tow
 date: 2022-01-01
 venue: 'Journal of Lightwave Technology'
 paperurl: 'https://doi.org/10.1109/JLT.2021.3130447'
-citation: 'Marco Avesani, Giulio Foletto, Matteo Padovan, Luca Calderaro, Costantino Agnesi, Elisa Bazzani, ..., "Deployment-ready quantum key distribution over a classical network infrastructure in Padua", Journal of Lightwave Technology, (2022).'
+citation: 'Marco Avesani, Giulio Foletto, Matteo Padovan, Luca Calderaro, Costantino Agnesi, Elisa Bazzani, ..., "Deployment-ready quantum key distribution over a classical network infrastructure in Padua", Journal of Lightwave Technology, vol. 40, pp. 1658-1663, (2022).'
 ---
 
 Current technological progress is driving Quantum Key Distribution towards a commercial and world widescale expansion. Its capability to deliver unconditionally secure communication will be a fundamental feature in the next generations of telecommunication networks. Nevertheless, demonstrations of QKD implementation in a real operating scenario and their coexistence with the classical telecom infrastructure are of fundamental importance for reliable exploitation. Here we present a Quantum Key Distribution application implemented overa classical fiber-based infrastructure. By exploiting just a single fiber cable for both the quantum and the classical channel and by using a simplified receiver scheme with just one single-photon detector, we demonstrate the feasibility of low-cost and ready-to-use Quantum Key Distribution systems compatible with standard classical infrastructure.
 
-**Authors:** **Marco Avesani**, Giulio Foletto, Matteo Padovan, Luca Calderaro, Costantino Agnesi, Elisa Bazzani, Federico Berra, Tommaso Bertapelle, Francesco Picciariello, Francesco B. L. Santagiustina, Davide Scalcon, Alessia Scriminich, Andrea Stanco, Francesco Vedovato, Giuseppe Vallone, Paolo Villoresi
+**Authors:** **Marco Avesani**, Giulio Foletto, Matteo Padovan, Luca Calderaro, Costantino Agnesi, Elisa Bazzani, Federico Berra, Tommaso Bertapelle, Francesco Picciariello, Francesco BL Santagiustina, Davide Scalcon, Alessia Scriminich, Andrea Stanco, Francesco Vedovato, Giuseppe Vallone, Paolo Villoresi
 
 
 [Journal](https://doi.org/10.1109/JLT.2021.3130447){: .btn .btn--info} [ArXiv](https://arxiv.org/abs/2109.13558){: .btn .btn--info}
