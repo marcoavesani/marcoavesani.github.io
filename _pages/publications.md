@@ -11,11 +11,11 @@ author_profile: true
 
 {%include base_path %}
 
-*Last updated: May 26, 2026*
+*Last updated: May 27, 2026*
 
 ## Preprints
 
-* Matías Rubén Bolaños, Edoardo Rossi, Federico Berra, Alberto De Toni, Ilektra Karakosta-Amarantidou, Daniel Christian Lawo, Costantino Agnesi, **Marco Avesani**, Andrea Stanco, Francesco Vedovato, Paolo Villoresi, Giuseppe Vallone - *"GHz-rate polarization-based QKD system for fiber and satellite applications"* - arXiv preprint arXiv:2602.08908 (2026) \\
+* Matías Rubén Bolaños, Edoardo Rossi, Federico Berra, Alberto De Toni, Ilektra Karakosta-Amarantidou, Daniel Christian Lawo, Costantino Agnesi, **Marco Avesani**, Andrea Stanco, Francesco Vedovato, Paolo Villoresi, Giuseppe Vallone - *"GHz-rate polarization-based QKD system for fiber and satellite applications"* - arXiv e-prints (2026) \\
 [ArXiv](https://arxiv.org/abs/2602.08908){: .btn .btn--info}
 
 * Edoardo Rossi, Ilektra Karakosta-Amarantidou, Matteo Padovan, Marco Nardi, **Marco Avesani**, Francesco Bruno Leonardo Santagiustina, Marco Taffarello, Antonio Vanzo, Stefano Bonora, Giuseppe Vallone, Paolo Villoresi, Francesco Vedovato - *"Intermodal quantum key distribution over an 18 km free-space channel with adaptive optics and room-temperature detectors"* - arXiv preprint arXiv:2602.16680 (2026) \\
@@ -75,7 +75,7 @@ author_profile: true
 [ArXiv](https://arxiv.org/abs/2111.13383){: .btn .btn--info}  [Journal](https://doi.org/10.1002/qute.202200051){: .btn .btn--info}
 
 * **Marco Avesani**, Giulio Foletto, Matteo Padovan, Luca Calderaro, Costantino Agnesi, Elisa Bazzani, Federico Berra, Tommaso Bertapelle, Francesco Picciariello, Francesco BL Santagiustina, Davide Scalcon, Alessia Scriminich, Andrea Stanco, Francesco Vedovato, Giuseppe Vallone, Paolo Villoresi - *"Deployment-ready quantum key distribution over a classical network infrastructure in Padua"* - Journal of Lightwave Technology (2022) \\
-[ArXiv](https://arxiv.org/abs/2109.13558){: .btn .btn--info}  [Journal](https://opg.optica.org/abstract.cfm?uri=jlt-40-6-1658){: .btn .btn--info}
+[ArXiv](https://arxiv.org/abs/2109.13558){: .btn .btn--info}  [Journal](https://doi.org/10.1109/JLT.2021.3130447){: .btn .btn--info}
 
 * **Marco Avesani**, Hamid Tebyanian, Paolo Villoresi, Giuseppe Vallone - *"Unbounded randomness from uncharacterized sources"* - Communications Physics (2022) \\
 [ArXiv](https://arxiv.org/abs/2010.05798){: .btn .btn--info}  [Journal](https://doi.org/10.1038/s42005-022-01038-3){: .btn .btn--info}

@@ -5,7 +5,7 @@ permalink: /publication/avesani_2022_deploymentready_quantum_key
 excerpt: 'Current technological progress is driving Quantum Key Distribution towards a commercial and world widescale expansion. Its capability to deliver unconditionally secure communication will be a fundamen...' if len(self.abstract) > 200 else self.abstract
 date: 2022-01-01
 venue: 'Journal of Lightwave Technology'
-paperurl: 'https://opg.optica.org/abstract.cfm?uri=jlt-40-6-1658'
+paperurl: 'https://doi.org/10.1109/JLT.2021.3130447'
 citation: 'Marco Avesani, Giulio Foletto, Matteo Padovan, Luca Calderaro, Costantino Agnesi, Elisa Bazzani, ..., "Deployment-ready quantum key distribution over a classical network infrastructure in Padua", Journal of Lightwave Technology, vol. 40, pp. 1658-1663, (2022).'
 ---
 
@@ -14,4 +14,4 @@ Current technological progress is driving Quantum Key Distribution towards a com
 **Authors:** **Marco Avesani**, Giulio Foletto, Matteo Padovan, Luca Calderaro, Costantino Agnesi, Elisa Bazzani, Federico Berra, Tommaso Bertapelle, Francesco Picciariello, Francesco BL Santagiustina, Davide Scalcon, Alessia Scriminich, Andrea Stanco, Francesco Vedovato, Giuseppe Vallone, Paolo Villoresi
 
 
-[Journal](https://opg.optica.org/abstract.cfm?uri=jlt-40-6-1658){: .btn .btn--info} [ArXiv](https://arxiv.org/abs/2109.13558){: .btn .btn--info}
+[Journal](https://doi.org/10.1109/JLT.2021.3130447){: .btn .btn--info} [ArXiv](https://arxiv.org/abs/2109.13558){: .btn .btn--info}
