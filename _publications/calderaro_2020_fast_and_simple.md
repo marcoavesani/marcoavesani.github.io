@@ -6,7 +6,7 @@ excerpt: 'We propose Qubit4Sync, a synchronization method for Quantum Key Distri
 date: 2020-01-01
 venue: 'Physical Review Applied'
 paperurl: 'https://doi.org/10.1103/PhysRevApplied.13.054041'
-citation: 'Luca Calderaro, Andrea Stanco, Costantino Agnesi, Marco Avesani, Daniele Dequal, Paolo Villoresi,..., "Fast and simple qubit-based synchronization for quantum key distribution", Physical Review Applied, (2020).'
+citation: 'Luca Calderaro, Andrea Stanco, Costantino Agnesi, Marco Avesani, Daniele Dequal, Paolo Villoresi,..., "Fast and simple qubit-based synchronization for quantum key distribution", Physical Review Applied, vol. 13, pp. 054041, (2020).'
 ---
 
 We propose Qubit4Sync, a synchronization method for Quantum Key Distribution (QKD) setups, based on the same qubits exchanged during the protocol and without requiring additional hardware other than the one necessary to prepare and measure the quantum states. Our approach introduces a new cross-correlation algorithm achieving the lowest computational complexity, to our knowledge, for high channel losses. We tested the robustness of our scheme in a real QKD implementation.
