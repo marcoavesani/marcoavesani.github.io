@@ -11,12 +11,15 @@ author_profile: true
 
 {%include base_path %}
 
-*Last updated: July 12, 2026*
+*Last updated: July 13, 2026*
 
 ## Preprints
 
 * Mattia Sabatini, Carles Roch i Carceller, Tommaso Bertapelle, Andrea Peri, Giulio Gualandi, Matías Rubén Bolaños, Yoann Piétri, Giacomo Corrielli, Paolo Villoresi, Giuseppe Vallone, Roberto Osellame, Armin Tavakoli, **Marco Avesani** - *"Efficient Energy-Constrained Semi-Device-Independent QRNG with an Integrated Heterodyne Receiver"* - arXiv (2026) \\
 [ArXiv](https://arxiv.org/abs/2606.23231){: .btn .btn--info}
+
+* Andrea Pompermaier, Kannan Vijayadharan, Costantino Agnesi, **Marco Avesani**, Giuseppe Vallone, Paolo Villoresi - *"GHz-rate all-fiber active polarization state analyzer for quantum protocols"* - arXiv (2026) \\
+[ArXiv](https://arxiv.org/abs/2607.09597){: .btn .btn--info}
 
 * Matías Rubén Bolaños, Edoardo Rossi, Federico Berra, Alberto De Toni, Ilektra Karakosta-Amarantidou, Daniel Christian Lawo, Costantino Agnesi, **Marco Avesani**, Andrea Stanco, Francesco Vedovato, Paolo Villoresi, Giuseppe Vallone - *"GHz-rate polarization-based QKD system for fiber and satellite applications"* - arXiv (2026) \\
 [ArXiv](https://arxiv.org/abs/2602.08908){: .btn .btn--info}
