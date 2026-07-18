@@ -11,14 +11,14 @@ author_profile: true
 
 {%include base_path %}
 
-*Last updated: July 17, 2026*
+*Last updated: July 18, 2026*
 
 ## Preprints
 
 * Mattia Sabatini, Tommaso Bertapelle, Andrea Peri, Giulio Gualandi, Matías Rubén Bolaños, Yoann Piétri, Giacomo Corrielli, Paolo Villoresi, Giuseppe Vallone, Roberto Osellame, Armin Tavakoli, **Marco Avesani** - *"Efficient Energy-Constrained Semi-Device-Independent QRNG with an Integrated Heterodyne Receiver"* - arXiv preprint arXiv:2606.23231 (2026) \\
 [ArXiv](https://arxiv.org/abs/2606.23231){: .btn .btn--info}
 
-* Andrea Pompermaier, Kannan Vijayadharan, Costantino Agnesi, **Marco Avesani**, Giuseppe Vallone, Paolo Villoresi - *"GHz-rate all-fiber active polarization state analyzer for quantum protocols"* - arXiv (2026) \\
+* Andrea Pompermaier, Kannan Vijayadharan, Costantino Agnesi, **Marco Avesani**, Giuseppe Vallone, Paolo Villoresi - *"GHz-rate all-fiber active polarization state analyzer for quantum protocols"* - arXiv preprint arXiv:2607.09597 (2026) \\
 [ArXiv](https://arxiv.org/abs/2607.09597){: .btn .btn--info}
 
 * Matías Rubén Bolaños, Edoardo Rossi, Federico Berra, Alberto De Toni, Ilektra Karakosta-Amarantidou, Daniel Christian Lawo, Costantino Agnesi, **Marco Avesani**, Andrea Stanco, Francesco Vedovato, Paolo Villoresi, Giuseppe Vallone - *"GHz-rate polarization-based QKD system for fiber and satellite applications"* - arXiv e-prints (2026) \\
@@ -30,9 +30,6 @@ author_profile: true
 * Gianluca Teza, Francesco Campaioli, **Marco Avesani**, Oren Raz - *"Finite-temperature criticality through quantum annealing"* - arXiv preprint arXiv:2507.07167 (2025) \\
 [ArXiv](https://arxiv.org/abs/2507.07167){: .btn .btn--info}
 
-* Federico Berra, Matías Rubén Bolaños, Alberto De Toni, Kannan Vijayadharan, Costantino Agnesi, **Marco Avesani**, Andrea Stanco, Paolo Villoresi, Giuseppe Vallone - *"General model and modulation strategies for Sagnac-based encoders"* - arXiv preprint arXiv:2510.11873 (2025) \\
-[ArXiv](https://arxiv.org/abs/2510.11873){: .btn .btn--info}
-
 * Alberto De Toni, Edoardo Bortolozzo, Alessandro Emanuele, Marco Venturini, Luca Calderaro, **Marco Avesani**, Giuseppe Vallone, Paolo Villoresi - *"Long-term analysis of efficient-BB84 4-node network with optical switches in metropolitan environment"* - arXiv preprint arXiv:2510.16867 (2025) \\
 [ArXiv](https://arxiv.org/abs/2510.16867){: .btn .btn--info}
 
@@ -43,6 +40,9 @@ author_profile: true
 [ArXiv](https://arxiv.org/abs/2305.01554){: .btn .btn--info}
 
 ## Peer-reviewed Journals
+
+* Federico Berra, Matías Rubén Bolaños, Alberto De Toni, Kannan Vijayadharan, Costantino Agnesi, **Marco Avesani**, Andrea Stanco, Paolo Villoresi, Giuseppe Vallone - *"General model and modulation strategies for Sagnac-based encoders"* - Physical Review Research (2026) \\
+[ArXiv](https://arxiv.org/abs/2510.11873){: .btn .btn--info}  [Journal](https://doi.org/10.1103/q2sy-sw7h){: .btn .btn--info}
 
 * Lorenzo Coccia, Matteo Padovan, Andrea Pompermaier, Mattia Sabatini, **Marco Avesani**, Davide G Marangon, Paolo Villoresi, Giuseppe Vallone - *"Quantum bounds and device-independent security with rank-one qubit measurements"* - npj Quantum Information (2026) \\
 [ArXiv](https://arxiv.org/abs/2503.13282){: .btn .btn--info}  [Journal](https://doi.org/10.1038/s41534-025-01175-x){: .btn .btn--info}
