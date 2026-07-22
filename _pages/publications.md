@@ -11,7 +11,7 @@ author_profile: true
 
 {%include base_path %}
 
-*Last updated: July 21, 2026*
+*Last updated: July 22, 2026*
 
 ## Preprints
 
@@ -33,13 +33,13 @@ author_profile: true
 * Alberto De Toni, Edoardo Bortolozzo, Alessandro Emanuele, Marco Venturini, Luca Calderaro, **Marco Avesani**, Giuseppe Vallone, Paolo Villoresi - *"Long-term analysis of efficient-BB84 4-node network with optical switches in metropolitan environment"* - arXiv (2025) \\
 [ArXiv](https://arxiv.org/abs/2510.16867){: .btn .btn--info}
 
-* Davide Scalcon, Matteo Padovan, Paolo Villoresi, Giuseppe Vallone, **Marco Avesani** - *"Versatile Wavelength-Division Multiplexed Quantum Key Distribution Network Operating Simultaneously in the O and C Bands"* - arXiv (2025) \\
-[ArXiv](https://arxiv.org/abs/2507.11175){: .btn .btn--info}
-
 ## Peer-reviewed Journals
 
 * Federico Berra, Matías Rubén Bolaños, Alberto De Toni, Kannan Vijayadharan, Costantino Agnesi, **Marco Avesani**, Andrea Stanco, Paolo Villoresi, Giuseppe Vallone - *"General model and modulation strategies for Sagnac-based encoders"* - Physical Review Research (2026) \\
 [ArXiv](https://arxiv.org/abs/2510.11873){: .btn .btn--info}  [Journal](https://doi.org/10.1103/q2sy-sw7h){: .btn .btn--info}
+
+* Davide Scalcon, Matteo Padovan, Paolo Villoresi, Giuseppe Vallone, **Marco Avesani** - *"Versatile Wavelength-Division Multiplexed Quantum Key Distribution Network Operating Simultaneously in the O and C Bands"* - Optica Quantum (2026) \\
+[ArXiv](https://arxiv.org/abs/2507.11175){: .btn .btn--info}  [Journal](https://doi.org/10.1364/OPTICAQ.579856){: .btn .btn--info}
 
 * Kannan Vijayadharan, Matías Rubén Bolaños, **Marco Avesani**, Giuseppe Vallone, Paolo Villoresi, Costantino Agnesi - *"A Sagnac-based arbitrary time-bin state encoder for quantum communication applications"* - EPJ Quantum Technology (2025) \\
 [ArXiv](https://arxiv.org/abs/2506.08971){: .btn .btn--info}  [Journal](https://doi.org/10.1140/epjqt/s40507-025-00428-0){: .btn .btn--info}
