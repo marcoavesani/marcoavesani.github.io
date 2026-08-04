@@ -11,7 +11,7 @@ author_profile: true
 
 {%include base_path %}
 
-*Last updated: August 03, 2026*
+*Last updated: August 04, 2026*
 
 ## Preprints
 
@@ -26,6 +26,9 @@ author_profile: true
 
 * Edoardo Rossi, Ilektra Karakosta-Amarantidou, Matteo Padovan, Marco Nardi, **Marco Avesani**, Francesco Bruno Leonardo Santagiustina, Marco Taffarello, Antonio Vanzo, Stefano Bonora, Giuseppe Vallone, Paolo Villoresi, Francesco Vedovato - *"Intermodal quantum key distribution over an 18 km free-space channel with adaptive optics and room-temperature detectors"* - arXiv (2026) \\
 [ArXiv](https://arxiv.org/abs/2602.16680){: .btn .btn--info}
+
+* Francesco Campaioli, **Marco Avesani**, Oren Raz, Roderich Moessner, Gianluca Teza - *"Validation and calibration of quantum hardware through the many-body quantum Mpemba effect"* - arXiv (2026) \\
+[ArXiv](https://arxiv.org/abs/2608.01788){: .btn .btn--info}
 
 * Alberto De Toni, Edoardo Bortolozzo, Alessandro Emanuele, Marco Venturini, Luca Calderaro, **Marco Avesani**, Giuseppe Vallone, Paolo Villoresi - *"Long-term analysis of efficient-BB84 4-node network with optical switches in metropolitan environment"* - arXiv (2025) \\
 [ArXiv](https://arxiv.org/abs/2510.16867){: .btn .btn--info}
