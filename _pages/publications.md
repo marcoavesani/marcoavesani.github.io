@@ -11,7 +11,7 @@ author_profile: true
 
 {%include base_path %}
 
-*Last updated: August 24, 2026*
+*Last updated: August 25, 2026*
 
 ## Preprints
 
@@ -27,7 +27,7 @@ author_profile: true
 * Mattia Sabatini, Edoardo Rossi, Matías R. Bolaños, Francesco Vedovato, Thomas Liege, Eleni Diamanti, Giuseppe Vallone, Paolo Villoresi, Yoann Piétri, **Marco Avesani** - *"Multiplexing of Continuous-Variable and Discrete-Variable Quantum Key Distribution Systems over Fibered and Free-Space Channels"* - arXiv (2026) \\
 [ArXiv](https://arxiv.org/abs/2608.19745){: .btn .btn--info}
 
-* Dnan A. E. Hajomer, Huy Q. Nguyen, Ivan Derkach, Andreas B. Kidmose, Edoardo Rossi, Mattia Sabatini, Yoann Pietri, **Marco Avesani**, Francesco Vedovato, Michael Hentschel, Radim Filip, Giuseppe Vallone, Vladyslav Usenko, Tobias Gehring, Soren Forchhammer, Paolo Villoresi, Ulrik L. Andersen - *"Squeezed- and coherent-state quantum key distribution over a deployed hybrid fibre-free-space channel"* - arXiv (2026) \\
+* Adnan A. E. Hajomer, Huy Q. Nguyen, Ivan Derkach, Andreas B. Kidmose, Edoardo Rossi, Mattia Sabatini, Yoann Pietri, **Marco Avesani**, Francesco Vedovato, Michael Hentschel, Radim Filip, Giuseppe Vallone, Vladyslav Usenko, Tobias Gehring, Soren Forchhammer, Paolo Villoresi, Ulrik L. Andersen - *"Squeezed- and coherent-state quantum key distribution over a deployed hybrid fibre-free-space channel"* - arXiv (2026) \\
 [ArXiv](https://arxiv.org/abs/2608.20088){: .btn .btn--info}
 
 * Francesco Campaioli, **Marco Avesani**, Oren Raz, Roderich Moessner, Gianluca Teza - *"Validation and calibration of quantum hardware through the many-body quantum Mpemba effect"* - arXiv (2026) \\
