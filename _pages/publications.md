@@ -11,7 +11,7 @@ author_profile: true
 
 {%include base_path %}
 
-*Last updated: September 11, 2026*
+*Last updated: September 12, 2026*
 
 ## Preprints
 
@@ -59,17 +59,17 @@ author_profile: true
 * Lorenzo Coccia, Matteo Padovan, Andrea Pompermaier, Mattia Sabatini, **Marco Avesani**, Davide Giacomo Marangon, Paolo Villoresi, Giuseppe Vallone - *"Quantum bounds and device-independent security with rank-one qubit measurements"* - npj Quantum Inf (2025) \\
 [ArXiv](https://arxiv.org/abs/2503.13282){: .btn .btn--info}  [Journal](https://doi.org/10.1038/s41534-025-01175-x){: .btn .btn--info}
 
-* Davide Scalcon, Matteo Padovan, Paolo Villoresi, Giuseppe Vallone, **Marco Avesani** - *"Versatile Wavelength-Division Multiplexed Quantum Key Distribution Network Operating Simultaneously in the O and C Bands"* - Optica Quantum 4, 353 (2026) (2025) \\
-[ArXiv](https://arxiv.org/abs/2507.11175){: .btn .btn--info}
+* Davide Scalcon, Matteo Padovan, Paolo Villoresi, Giuseppe Vallone, **Marco Avesani** - *"Versatile Wavelength-Division Multiplexed Quantum Key Distribution Network Operating Simultaneously in the O and C Bands"* - Optica Quantum (2025) \\
+[ArXiv](https://arxiv.org/abs/2507.11175){: .btn .btn--info}  [Journal](https://doi.org/10.1364/OPTICAQ.579856){: .btn .btn--info}
 
 * Mattia Sabatini, Tommaso Bertapelle, Paolo Villoresi, Giuseppe Vallone, **Marco Avesani** - *"Hybrid encoder for discrete and continuous variable QKD"* - Adv Quantum Technol. 2025, 2400522 (2024) \\
 [ArXiv](https://arxiv.org/abs/2408.17412){: .btn .btn--info}  [Journal](https://doi.org/10.1002/qute.202400522){: .btn .btn--info}
 
-* Tommaso Bertapelle, **Marco Avesani**, Alberto Santamato, Alberto Montanaro, Marco Chiesa, Davide Rotta, Massimo Artiglia, Vito Sorianello, Francesco Testa, Gabriele De Angelis, Giampiero Contestabile, Giuseppe Vallone, Marco Romagnoli, Paolo Villoresi - *"High-speed Source-Device-Independent Quantum Random Number Generator on a Chip"* - Optica Quantum (2023) \\
-[ArXiv](https://arxiv.org/abs/2305.12472){: .btn .btn--info}  [Journal](https://doi.org/10.1364/OPTICAQ.529746){: .btn .btn--info}
+* Tommaso Bertapelle, **Marco Avesani**, Alberto Santamato, Alberto Montanaro, Marco Chiesa, Davide Rotta, Massimo Artiglia, Vito Sorianello, Francesco Testa, Gabriele De Angelis, Giampiero Contestabile, Giuseppe Vallone, Marco Romagnoli, Paolo Villoresi - *"High-speed Source-Device-Independent Quantum Random Number Generator on a Chip"* - Optica Quantum 3, 111-118 (2025) (2023) \\
+[ArXiv](https://arxiv.org/abs/2305.12472){: .btn .btn--info}
 
-* Francesco Picciariello, Ilektra Karakosta-Amarantidou, Edoardo Rossi, **Marco Avesani**, Giulio Foletto, Luca Calderaro, Giuseppe Vallone, Paolo Villoresi, Francesco Vedovato - *"Intermodal quantum key distribution field trial with active switching between fiber and free-space channels"* - EPJ Quantum Technol. 12, 6 (2025) (2023) \\
-[ArXiv](https://arxiv.org/abs/2310.17441){: .btn .btn--info}
+* Francesco Picciariello, Ilektra Karakosta-Amarantidou, Edoardo Rossi, **Marco Avesani**, Giulio Foletto, Luca Calderaro, Giuseppe Vallone, Paolo Villoresi, Francesco Vedovato - *"Intermodal quantum key distribution field trial with active switching between fiber and free-space channels"* - EPJ Quantum Technol. (2023) \\
+[ArXiv](https://arxiv.org/abs/2310.17441){: .btn .btn--info}  [Journal](https://doi.org/10.1140/epjqt/s40507-025-00306-9){: .btn .btn--info}
 
 * Francesco Picciariello, Francesco Vedovato, Davide Orsucci, Pablo Nahuel Dominguez, Thomas Zechel, **Marco Avesani**, Matteo Padovan, Giulio Foletto, Luca Calderaro, Daniele Dequal, Amita Shrestha, Ludwig Blumel, Johann Furthner, Giuseppe Vallone, Paolo Villoresi, Tobias D. Schmidt, Florian Moll - *"International time transfer between precise timing facilities secured with a quantum key distribution network"* - GPS solutions 28, 48 (2024) (2023) \\
 [ArXiv](https://arxiv.org/abs/2305.01554){: .btn .btn--info}
@@ -80,11 +80,11 @@ author_profile: true
 * Federico Berra, Costantino Agnesi, Andrea Stanco, **Marco Avesani**, Sebastiano Cocchi, Paolo Villoresi, Giuseppe Vallone - *"Modular source for near-infrared quantum communication"* - EPJ Quantum Technol. 10, 27 (2023) (2023) \\
 [ArXiv](https://arxiv.org/abs/2301.12882){: .btn .btn--info}
 
-* Matteo Padovan, Giulio Foletto, Lorenzo Coccia, **Marco Avesani**, Paolo Villoresi, Giuseppe Vallone - *"Secure and robust randomness with sequential quantum measurements"* - npj Quantum Information 10, 94 (2024) (2023) \\
-[ArXiv](https://arxiv.org/abs/2309.12286){: .btn .btn--info}
+* Matteo Padovan, Giulio Foletto, Lorenzo Coccia, **Marco Avesani**, Paolo Villoresi, Giuseppe Vallone - *"Secure and robust randomness with sequential quantum measurements"* - npj Quantum Information (2023) \\
+[ArXiv](https://arxiv.org/abs/2309.12286){: .btn .btn--info}  [Journal](https://doi.org/10.1038/s41534-024-00879-w){: .btn .btn--info}
 
-* Federico Berra, Costantino Agnesi, Andrea Stanco, **Marco Avesani**, Michal Kuklewski, Daniel Matter, Paolo Villoresi, Giuseppe Vallone - *"Synchronization of quantum communication over an optical classical communication channel"* - Applied Optics (2023) \\
-[ArXiv](https://arxiv.org/abs/2306.17603){: .btn .btn--info}  [Journal](https://doi.org/10.1364/AO.500416){: .btn .btn--info}
+* Federico Berra, Costantino Agnesi, Andrea Stanco, **Marco Avesani**, Michal Kuklewski, Daniel Matter, Paolo Villoresi, Giuseppe Vallone - *"Synchronization of quantum communication over an optical classical communication channel"* - Applied Optics 62, 7994 (2023) (2023) \\
+[ArXiv](https://arxiv.org/abs/2306.17603){: .btn .btn--info}
 
 * Davide Scalcon, Costantino Agnesi, **Marco Avesani**, Luca Calderaro, Giulio Foletto, Andrea Stanco, Giuseppe Vallone, Paolo Villoresi - *"Cross-encoded quantum key distribution exploiting time-bin and polarization states with qubit-based synchronization"* - Adv. Quantum Tech 2200051 (2022) (2021) \\
 [ArXiv](https://arxiv.org/abs/2111.13383){: .btn .btn--info}
