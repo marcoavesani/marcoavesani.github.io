@@ -11,7 +11,7 @@ author_profile: true
 
 {%include base_path %}
 
-*Last updated: September 24, 2026*
+*Last updated: September 25, 2026*
 
 ## Preprints
 
@@ -63,7 +63,7 @@ author_profile: true
 [ArXiv](https://arxiv.org/abs/2507.11175){: .btn .btn--info}  [Journal](https://doi.org/10.1364/OPTICAQ.579856){: .btn .btn--info}
 
 * Mattia Sabatini, Tommaso Bertapelle, Paolo Villoresi, Giuseppe Vallone, **Marco Avesani** - *"Hybrid encoder for discrete and continuous variable QKD"* - Adv Quantum Technol. 2025, 2400522 (2024) \\
-[ArXiv](https://arxiv.org/abs/2408.17412){: .btn .btn--info}
+[ArXiv](https://arxiv.org/abs/2408.17412){: .btn .btn--info}  [Journal](https://doi.org/10.1002/qute.202400522){: .btn .btn--info}
 
 * Tommaso Bertapelle, **Marco Avesani**, Alberto Santamato, Alberto Montanaro, Marco Chiesa, Davide Rotta, Massimo Artiglia, Vito Sorianello, Francesco Testa, Gabriele De Angelis, Giampiero Contestabile, Giuseppe Vallone, Marco Romagnoli, Paolo Villoresi - *"High-speed Source-Device-Independent Quantum Random Number Generator on a Chip"* - Optica Quantum 3, 111-118 (2025) (2023) \\
 [ArXiv](https://arxiv.org/abs/2305.12472){: .btn .btn--info}
