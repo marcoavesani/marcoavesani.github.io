@@ -11,7 +11,7 @@ author_profile: true
 
 {%include base_path %}
 
-*Last updated: September 25, 2026*
+*Last updated: September 26, 2026*
 
 ## Preprints
 
@@ -83,8 +83,8 @@ author_profile: true
 * Matteo Padovan, Giulio Foletto, Lorenzo Coccia, **Marco Avesani**, Paolo Villoresi, Giuseppe Vallone - *"Secure and robust randomness with sequential quantum measurements"* - npj Quantum Information (2023) \\
 [ArXiv](https://arxiv.org/abs/2309.12286){: .btn .btn--info}  [Journal](https://doi.org/10.1038/s41534-024-00879-w){: .btn .btn--info}
 
-* Federico Berra, Costantino Agnesi, Andrea Stanco, **Marco Avesani**, Michal Kuklewski, Daniel Matter, Paolo Villoresi, Giuseppe Vallone - *"Synchronization of quantum communication over an optical classical communication channel"* - Applied Optics (2023) \\
-[ArXiv](https://arxiv.org/abs/2306.17603){: .btn .btn--info}  [Journal](https://doi.org/10.1364/AO.500416){: .btn .btn--info}
+* Federico Berra, Costantino Agnesi, Andrea Stanco, **Marco Avesani**, Michal Kuklewski, Daniel Matter, Paolo Villoresi, Giuseppe Vallone - *"Synchronization of quantum communication over an optical classical communication channel"* - Applied Optics 62, 7994 (2023) (2023) \\
+[ArXiv](https://arxiv.org/abs/2306.17603){: .btn .btn--info}
 
 * Davide Scalcon, Costantino Agnesi, **Marco Avesani**, Luca Calderaro, Giulio Foletto, Andrea Stanco, Giuseppe Vallone, Paolo Villoresi - *"Cross-encoded quantum key distribution exploiting time-bin and polarization states with qubit-based synchronization"* - Adv. Quantum Tech 2200051 (2022) (2021) \\
 [ArXiv](https://arxiv.org/abs/2111.13383){: .btn .btn--info}
