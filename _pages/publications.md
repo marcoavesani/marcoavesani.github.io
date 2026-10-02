@@ -11,7 +11,7 @@ author_profile: true
 
 {%include base_path %}
 
-*Last updated: October 01, 2026*
+*Last updated: October 02, 2026*
 
 ## Preprints
 
@@ -21,7 +21,7 @@ author_profile: true
 * Andrea Pompermaier, Kannan Vijayadharan, Costantino Agnesi, **Marco Avesani**, Giuseppe Vallone, Paolo Villoresi - *"GHz-rate all-fiber active polarization state analyzer for quantum protocols"* - arXiv (2026) \\
 [ArXiv](https://arxiv.org/abs/2607.09597){: .btn .btn--info}
 
-* Edoardo Rossi, Ilektra Karakosta-Amarantidou, Matteo Padovan, Marco Nardi, **Marco Avesani**, Francesco Bruno Leonardo Santagiustina, Marco Taffarello, Antonio Vanzo, Stefano Bonora, Giuseppe Vallone, Paolo Villoresi, Francesco Vedovato - *"Intermodal quantum key distribution over an 18 km free-space channel with adaptive optics and room-temperature detectors"* - arXiv (2026) \\
+* Edoardo Rossi, Ilektra Karakosta-Amarantidou, Matteo Padovan, Marco Nardi, **Marco Avesani**, Francesco Bruno Leonardo Santagiustina, Marco Taffarello, Antonio Vanzo, Stefano Bonora, Giuseppe Vallone, Paolo Villoresi, Francesco Vedovato - *"Intermodal quantum key distribution over an 18 km free-space channel with adaptive optics and room-temperature detectors"* (2026) \\
 [ArXiv](https://arxiv.org/abs/2602.16680){: .btn .btn--info}
 
 * Mattia Sabatini, Edoardo Rossi, Matías R. Bolaños, Francesco Vedovato, Thomas Liege, Eleni Diamanti, Giuseppe Vallone, Paolo Villoresi, Yoann Piétri, **Marco Avesani** - *"Multiplexing of Continuous-Variable and Discrete-Variable Quantum Key Distribution Systems over Fibered and Free-Space Channels"* - arXiv (2026) \\
