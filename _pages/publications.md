@@ -11,7 +11,7 @@ author_profile: true
 
 {%include base_path %}
 
-*Last updated: October 15, 2026*
+*Last updated: October 16, 2026*
 
 ## Preprints
 
@@ -83,8 +83,8 @@ author_profile: true
 * Matteo Padovan, Giulio Foletto, Lorenzo Coccia, **Marco Avesani**, Paolo Villoresi, Giuseppe Vallone - *"Secure and robust randomness with sequential quantum measurements"* - npj Quantum Information (2023) \\
 [ArXiv](https://arxiv.org/abs/2309.12286){: .btn .btn--info}  [Journal](https://doi.org/10.1038/s41534-024-00879-w){: .btn .btn--info}
 
-* Federico Berra, Costantino Agnesi, Andrea Stanco, **Marco Avesani**, Michal Kuklewski, Daniel Matter, Paolo Villoresi, Giuseppe Vallone - *"Synchronization of quantum communication over an optical classical communication channel"* - Applied Optics (2023) \\
-[ArXiv](https://arxiv.org/abs/2306.17603){: .btn .btn--info}  [Journal](https://doi.org/10.1364/AO.500416){: .btn .btn--info}
+* Federico Berra, Costantino Agnesi, Andrea Stanco, **Marco Avesani**, Michal Kuklewski, Daniel Matter, Paolo Villoresi, Giuseppe Vallone - *"Synchronization of quantum communication over an optical classical communication channel"* - Applied Optics 62, 7994 (2023) (2023) \\
+[ArXiv](https://arxiv.org/abs/2306.17603){: .btn .btn--info}
 
 * Davide Scalcon, Costantino Agnesi, **Marco Avesani**, Luca Calderaro, Giulio Foletto, Andrea Stanco, Giuseppe Vallone, Paolo Villoresi - *"Cross-encoded quantum key distribution exploiting time-bin and polarization states with qubit-based synchronization"* - Adv. Quantum Tech 2200051 (2022) (2021) \\
 [ArXiv](https://arxiv.org/abs/2111.13383){: .btn .btn--info}
@@ -99,7 +99,7 @@ author_profile: true
 [ArXiv](https://arxiv.org/abs/2104.11137){: .btn .btn--info}
 
 * Andrea Stanco, Francesco B. L. Santagiustina, Luca Calderaro, **Marco Avesani**, Tommaso Bertapelle, Daniele Dequal, Giuseppe Vallone, Paolo Villoresi - *"Versatile and concurrent FPGA-based architecture for practical quantum communication systems"* - IEEE Transactions on Quantum Engineering, vol. 3, pp. 1-8, 2022, Art no. 6000108 (2021) \\
-[ArXiv](https://arxiv.org/abs/2107.01857){: .btn .btn--info}  [Journal](https://doi.org/10.1109/TQE.2022.3143997){: .btn .btn--info}
+[ArXiv](https://arxiv.org/abs/2107.01857){: .btn .btn--info}
 
 * **Marco Avesani**, Luca Calderaro, Giulio Foletto, Costantino Agnesi, Francesco Picciariello, Francesco Santagiustina, Alessia Scriminich, Andrea Stanco, Francesco Vedovato, Mujtaba Zahidy, Giuseppe Vallone, Paolo Villoresi - *"Resource-effective Quantum Key Distribution: a field-trial in Padua city center"* - Optics Letters 46, 2848 (2021) (2020) \\
 [ArXiv](https://arxiv.org/abs/2012.08457){: .btn .btn--info}
